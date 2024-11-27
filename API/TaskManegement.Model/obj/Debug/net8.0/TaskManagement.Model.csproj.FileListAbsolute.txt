@@ -1,0 +1,24 @@
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\bin\Debug\net8.0\TaskManagement.Model.deps.json
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\bin\Debug\net8.0\TaskManagement.Model.dll
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\bin\Debug\net8.0\TaskManagement.Model.pdb
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.AssemblyInfoInputs.cache
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.AssemblyInfo.cs
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.dll
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\refint\TaskManagement.Model.dll
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.pdb
+C:\Shyam Dhokiya\New Folder\FirstProject\API\TaskManegement.Model\obj\Debug\net8.0\ref\TaskManagement.Model.dll
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\bin\Debug\net8.0\TaskManagement.Model.deps.json
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\bin\Debug\net8.0\TaskManagement.Model.dll
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\bin\Debug\net8.0\TaskManagement.Model.pdb
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.AssemblyInfoInputs.cache
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.AssemblyInfo.cs
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.dll
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\refint\TaskManagement.Model.dll
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\TaskManagement.Model.pdb
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManegement.Model\obj\Debug\net8.0\ref\TaskManagement.Model.dll
