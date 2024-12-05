@@ -80,10 +80,9 @@ export default class LoginComponent implements OnInit {
              
             // navigate to teacher module or user module
             if(LoginDetail.RoleId === 1){
-              this.router.navigate(['/teacher/student-list']) 
-            }else{
-              
-              this.router.navigate(['/user/task-list'])
+              this.router.navigate(['/teacher/task-list']) 
+            }else{  
+              this.router.navigate(['/user/assignment-list'])
             }
           } else {
             // this.commonService.showNotification(

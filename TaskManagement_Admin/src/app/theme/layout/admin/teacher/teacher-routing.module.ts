@@ -4,6 +4,7 @@ import { DemoComponent } from './demo/demo.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { canActivate } from 'src/app/guard/auth.guard';
 import { TaskListComponent } from './task-list/task-list.component';
+import { SubmitAssignmentListComponent } from './submit-assignment-list/submit-assignment-list.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
     path : 'task-list',
     component : TaskListComponent,
     canActivate : [canActivate]
+  },
+  {
+    path : 'assignment-list',
+    component : SubmitAssignmentListComponent,
+    canActivate : [canActivate]   
   }
 ];
 

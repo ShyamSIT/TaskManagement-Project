@@ -5,4 +5,5 @@ export interface UserModel {
     Email : string,
     Password : string,
     RoleId : string,
+    FullName : string
 }

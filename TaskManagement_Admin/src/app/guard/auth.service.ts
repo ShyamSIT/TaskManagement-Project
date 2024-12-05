@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(
     private storageService : StorageService,
-    private route : Router,
+    private route   : Router,
     private commonService : CommonService,
   ) { }
 

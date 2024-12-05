@@ -6,12 +6,18 @@ import { Location, LocationStrategy } from '@angular/common';
 import { NavigationItem } from '../navigation';
 import { environment } from 'src/environments/environment';
 
+import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
+import { CommonService } from 'src/app/core/services/common.service';
+import { StorageService } from 'src/app/core/services/storage.service';
+
 @Component({
   selector: 'app-nav-content',
   templateUrl: './nav-content.component.html',
   styleUrls: ['./nav-content.component.scss']
 })
+
 export class NavContentComponent implements OnInit {
+   navigationItmes = []
   // public props
   @Output() NavCollapsedMob: EventEmitter<any> = new EventEmitter();
 
@@ -25,18 +31,24 @@ export class NavContentComponent implements OnInit {
   constructor(
     public nav: NavigationItem,
     private location: Location,
-    private locationStrategy: LocationStrategy
+    private locationStrategy: LocationStrategy,
+    private apiUrl :ApiUrlHelper, 
+    private commonService : CommonService,
+    private storageService: StorageService
   ) {
-    this.navigation = this.nav.get();
+    
   }
 
   // Life cycle events
   ngOnInit() {
+    this.getRoleRights();
+
     if (this.windowWidth < 1025) {
       (document.querySelector('.coded-navbar') as HTMLDivElement).classList.add('menupos-static');
     }
   }
 
+  
   fireOutClick() {
     let current_url = this.location.path();
     const baseHref = this.locationStrategy.getBaseHref();
@@ -66,5 +78,29 @@ export class NavContentComponent implements OnInit {
     if (this.windowWidth < 1025 && document.querySelector('app-navigation.coded-navbar').classList.contains('mob-open')) {
       this.NavCollapsedMob.emit();
     }
+  }
+
+  getRoleRights(){
+    const roleId = this.storageService.getValue('RoleId')
+    const apiUrl = this.apiUrl.apiUrl.roleRight.getRoleRightsById + '?RoleId=' + roleId;
+
+    this.commonService
+      .doGet(apiUrl)
+      .pipe()
+      .subscribe((data) =>{
+        if(data && data.Success && data.Data){
+          console.log(data.Data);
+          this.navigationItmes = data.Data.RoleRights.map(role => ({
+            id: role.MenuId,
+            title: role.MenuName,
+            type: 'item',
+            url: role.MenuUrl,
+            icon: role.MenuIcon || 'feather icon-user',
+            classes: 'nav-item'
+          }))
+
+          this.navigation = [...this.navigationItmes]
+        }
+      });
   }
 }

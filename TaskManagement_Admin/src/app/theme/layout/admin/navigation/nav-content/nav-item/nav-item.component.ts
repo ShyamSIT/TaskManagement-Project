@@ -12,7 +12,7 @@ import { NavigationItem } from '../../navigation';
 export class NavItemComponent {
   // public props
   @Input() item!: NavigationItem;
-
+  
   // public method
   closeOtherMenu(event: any) {
     const ele = event.target;

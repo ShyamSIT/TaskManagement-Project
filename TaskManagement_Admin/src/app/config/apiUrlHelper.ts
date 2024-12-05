@@ -14,11 +14,20 @@ export class ApiUrlHelper {
             getUserByUserId : 'user/GetUserByUserId',
             getUserList : 'user/GetUserList',
             getTaskList : 'user/GetTaskList',
+            getAssignmentList : 'user/GetAssignmentList',
+            submitAssignment : 'user/SubmitAssignment'
         },
         teacher : {
             addUpdateTask : 'teacher/AddUpdateTask',
             getTaskByTaskId : 'teacher/GetTaskByTaskId',
-            getTaskList : 'teacher/GetTaskList'
+            getTaskList : 'teacher/GetTaskList',
+            assignTask : 'teacher/AssignTask',
+            getAllUsersByNotAssignTask : 'teacher/GetAllUsersByNotAssignTask',
+            getAssignmentListByTeacherId : 'teacher/GetAssignmentListByTeacherId',
+            deleteTask : 'teacher/DeleteTask'
+        },
+        roleRight : {
+            getRoleRightsById : 'roleRight/GetRoleRightsById',
         }
     }
 }

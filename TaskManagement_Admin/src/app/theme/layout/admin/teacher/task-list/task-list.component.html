@@ -11,14 +11,21 @@
             <th>Task Name</th>
             <th>Description</th>
             <th>Deadline</th>
-
+            <th>Actions</th>
         </tr>
     </thead>
-    <tbody >
+    <tbody>
         <tr *ngFor="let t of tasklist">
             <td>{{t.TaskName}}</td>
             <td>{{t.Description}}</td>
             <td>{{t.Deadline | date :'dd/MM/yyyy'}}</td>
+            <td>
+                <div>
+                    <button class="btn btn-success btn-sm mx-2" (click)="onTaskEdit(t.TaskId)"><i class="ti ti-edit"></i> Edit </button>
+                    <button class="btn btn-secondary btn-sm mx-2" (click)="onAssignTask(t.TaskId)">Assign Task</button>
+                    <button class="btn btn-danger btn-sm" (click)="onDeleteTask(t.TaskId)"><i class="ti ti-trash"></i> Delete </button>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>

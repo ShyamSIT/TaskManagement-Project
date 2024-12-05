@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="exampleModalLabel">Assign task to Students</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input type="text" [value]="TaskId" formControlName="TaskId" hidden>
+        <div class="row">
+            <div class="mb-3">
+                <label for="" class="form-label h5">Student Lists : </label>
+                <!-- <select
+                    class="form-control choices-multiple"
+                    name=""
+                    id=""
+                    multiple
+                    formControlName="StudentId"
+                >
+                    <option *ngFor="let student of users;let i = index" [value]="student.UserId"> {{ student.FirstName + " " +student.LastName }} </option>
+                </select> -->
+                <div>
+
+                    <ng-select [items]="users" bindLabel="FullName" bindValue="UserId" [multiple]="true"
+                        placeholder="Select student to assign task" formControlName="StudentId">
+                    </ng-select>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary btn-sm">Submit</button>
+                <button class="btn btn-secondary btn-sm mx-2" (click)="modalRef.close()">Cancel</button>
+            </div>
+        </div>
+    </form>
+<!-- 
+    <div class="mt-3">
+        <button class="btn btn-primary" (click)="openModal()">Open another dialog box</button>
+    </div> -->
+</div>

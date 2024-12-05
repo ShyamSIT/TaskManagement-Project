@@ -21,6 +21,7 @@ import { GuestComponent } from './theme/layout/guest/guest.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { canActivate } from './guard/auth.guard';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { canActivate } from './guard/auth.guard';
     ConfigurationComponent,
     GuestComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule , HttpClientModule,NgbModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule , HttpClientModule,NgbModule,NgSelectModule],
   providers: [NavigationItem,canActivate],
   bootstrap: [AppComponent]
 })

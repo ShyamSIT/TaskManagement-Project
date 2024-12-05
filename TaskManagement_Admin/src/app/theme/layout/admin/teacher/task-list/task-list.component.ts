@@ -5,6 +5,7 @@ import { TaskModel } from 'src/app/core/model/task-model';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { TaskMasterComponent } from '../task-master/task-master.component';
+import { AssignMasterComponent } from '../assign-master/assign-master.component';
 
 @Component({
   selector: 'app-task-list',
@@ -27,8 +28,8 @@ export class TaskListComponent implements OnInit {
   }
   
   getTaskList(){
-    const apiUrl   = this.apiUrl.apiUrl.teacher.getTaskList
-
+    const UserId = this.storageService.getValue('UserId');
+    const apiUrl   = this.apiUrl.apiUrl.teacher.getTaskList+ '?UserId=' + UserId
     this.commonService
      .doGet(apiUrl)
      .pipe()
@@ -42,6 +43,40 @@ export class TaskListComponent implements OnInit {
   }
 
   openModal(){
-    this.modalService.open(TaskMasterComponent,{centered:true})
+    const modalRef = this.modalService.open(TaskMasterComponent,{centered:true})
+    modalRef.result.then((result) => {
+      this.getTaskList()
+    })
+  }
+
+  onTaskEdit(TaskId : number){
+    const modalRef = this.modalService.open(TaskMasterComponent,{
+      centered:true
+    })
+    modalRef.componentInstance.data = TaskId
+    modalRef.result.then((result) => {
+      this.getTaskList()
+    })
+  }
+
+  onAssignTask(TaskId : number){
+    const modalRef = this.modalService.open(AssignMasterComponent,{
+      centered:true
+    })
+    modalRef.componentInstance.data = TaskId 
+  }
+  
+  onDeleteTask(TaskId : number){
+    const apiUrl = this.apiUrl.apiUrl.teacher.deleteTask + "?TaskId=" + TaskId
+    this.commonService
+     .doGet(apiUrl)
+     .pipe()
+     .subscribe({
+        next : (data) => {
+          if(data && data.Success){
+            this.getTaskList()
+          }
+        }
+     })
   }
 }
