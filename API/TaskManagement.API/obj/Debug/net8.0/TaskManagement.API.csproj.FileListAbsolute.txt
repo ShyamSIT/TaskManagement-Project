@@ -158,3 +158,4 @@ C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\T
 C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManagement.API\obj\Debug\net8.0\TaskManagement.API.pdb
 C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManagement.API\obj\Debug\net8.0\TaskManagement.API.genruntimeconfig.cache
 C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManagement.API\obj\Debug\net8.0\ref\TaskManagement.API.dll
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskManagement.API\obj\Debug\net8.0\TaskManagement.API.sourcelink.json

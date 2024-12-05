@@ -117,5 +117,54 @@ namespace TaskManagement.API.Controllers
             return response;
         }
         #endregion
+
+        #region GetAssignmentList
+        [HttpGet("GetAssignmentList")]
+        public async Task<ApiResponse<AssignmentModel>> GetAllUsersByNotAssignTask(long UserId)
+        {
+            ApiResponse<AssignmentModel> response = new() { Data = [] };
+            try
+            {
+                List<AssignmentModel> assignments = await _userService.GetAssignmentList(UserId);
+                response.Success = true;
+                response.Data = assignments;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return response;
+        }
+        #endregion
+
+        #region SubmitAssignment
+        [HttpPost("SubmitAssignment")]
+        public async Task<ApiPostResponse<AssignmentModel>> SubmitAssignment(AssignmentModel model)
+        {
+            ApiPostResponse<AssignmentModel> response = new();
+            try
+            {
+                AssignmentModel assignment = await _userService.SubmitAssignment(model);
+                if(assignment != null && assignment.AssignmentId > 0)
+                {
+                    response.Success = true;
+                    response.Data = assignment;
+                    response.Message = "Submit Successfully";
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Something went Wrong";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return response;
+        }
+        #endregion
     }
 }

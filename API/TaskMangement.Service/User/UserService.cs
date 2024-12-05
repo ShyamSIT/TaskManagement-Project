@@ -14,6 +14,10 @@ namespace TaskManagement.Service.User
         #region Fields
         private readonly IUserRepository _repository = repository;
         #endregion
+        public async Task<List<AssignmentModel>> GetAssignmentList(long UserId)
+        {
+            return await _repository.GetAssignmentList(UserId);
+        }
         public async Task<List<TaskModel>> GetTaskList()
         {
             return await _repository.GetTaskList();
@@ -33,5 +37,9 @@ namespace TaskManagement.Service.User
             return await _repository.SaveUser(userDetailModel);
         }
 
+        public async Task<AssignmentModel> SubmitAssignment(AssignmentModel model)
+        {
+            return await _repository.SubmitAssignment(model);
+        }
     }
 }

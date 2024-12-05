@@ -32,3 +32,4 @@ C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\T
 C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskMangement.Data\obj\Debug\net8.0\refint\TaskManagement.Data.dll
 C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskMangement.Data\obj\Debug\net8.0\TaskManagement.Data.pdb
 C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskMangement.Data\obj\Debug\net8.0\ref\TaskManagement.Data.dll
+C:\Shyam Dhokiya\Practice Projects\Angular  + DotNet Core\TaskManagement-2\API\TaskMangement.Data\obj\Debug\net8.0\TaskManagement.Data.sourcelink.json

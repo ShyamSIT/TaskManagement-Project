@@ -13,5 +13,8 @@ namespace TaskManagement.Service.User
         Task<UserDetailModel> GetUserByUserId(long UserId);
         Task<List<UserDetailModel>> GetUserList();
         Task<List<TaskModel>> GetTaskList();
+        Task<List<AssignmentModel>> GetAssignmentList(long UserId);
+
+        Task<AssignmentModel> SubmitAssignment(AssignmentModel model);
     }
 }

@@ -17,14 +17,34 @@ namespace TaskManagement.Service.Teacher
             return await _repository.AddUpdateTask(model);
         }
 
+        public async Task<long> AssignTask(AssignModel model)
+        {
+            return await _repository.AssignTask(model);
+        }
+
+        public async Task<long> DeleteTask(long TaskId)
+        {
+            return await _repository.DeleteTask(TaskId);
+        }
+
+        public async Task<List<UserDetailModel>> GetAllUsersByNotAssignTask(long TaskId)
+        {
+            return await _repository.GetAllUsersByNotAssignTask(TaskId);
+        }
+
+        public async Task<List<AssignmentModel>> GetAssignmentListByTeacherId(long UserId)
+        {
+            return await _repository.GetAssignmentListByTeacherId(UserId);
+        }
+
         public async Task<TaskModel> GetTaskByTaskId(long TaskId)
         {
             return await _repository.GetTaskByTaskId(TaskId);
         }
 
-        public async Task<List<TaskModel>> GetTaskList()
+        public async Task<List<TaskModel>> GetTaskList(long UserId)
         {
-            return await _repository.GetTaskList();
+            return await _repository.GetTaskList(UserId);
         }
     }
 }

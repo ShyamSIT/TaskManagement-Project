@@ -47,5 +47,25 @@ namespace TaskManagement.Data.DBRepository.User
             var data = await QueryAsync<TaskModel>(StoreProcedure.GetTaskList, commandType: CommandType.StoredProcedure);
             return data.ToList();
         }
+
+        public async Task<List<AssignmentModel>> GetAssignmentList(long UserId)
+        {
+            var param = new DynamicParameters();
+            param.Add("@UserId", UserId);
+
+            var data = await QueryAsync<AssignmentModel>(StoreProcedure.GetAssignmentList, param, commandType: CommandType.StoredProcedure);
+            return data.ToList();
+        }
+
+        public async Task<AssignmentModel> SubmitAssignment(AssignmentModel assignmentModel)
+        {
+            var param = new DynamicParameters();
+            param.Add("@AssignmentId", assignmentModel.AssignmentId);
+            param.Add("@TaskId", assignmentModel.TaskId);
+            param.Add("@UserId", assignmentModel.UserId);
+            param.Add("@IsCompleted", assignmentModel.IsCompleted);
+
+            return await QueryFirstOrDefaultAsync<AssignmentModel>(StoreProcedure.SubmitAssignment, param, commandType: CommandType.StoredProcedure);
+        }
     }
 }
