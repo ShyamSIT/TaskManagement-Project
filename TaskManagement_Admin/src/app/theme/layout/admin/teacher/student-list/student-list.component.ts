@@ -50,7 +50,7 @@ export class StudentListComponent implements OnInit {
   }
 
   onEditModal(UserId : BigInt){
-    debugger
+    
     const modalRef = this.modalService.open(UserMasterComponent , {
       centered: true
     })
@@ -61,7 +61,6 @@ export class StudentListComponent implements OnInit {
   }
 
   onDeleteUser(UserId : any){
-    debugger
     const apiUrl = this.apiUrl.apiUrl.user.deleteUser + '?UserId=' + UserId
     this.commonService
      .doGet(apiUrl)

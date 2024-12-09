@@ -37,7 +37,7 @@ export class UserMasterComponent implements OnInit {
 
   
   ngOnInit(): void {
-    debugger
+    
     this.UserId = this.data || 0;
     this.initRegisterForm()
     if(this.UserId > 0){
@@ -84,7 +84,7 @@ export class UserMasterComponent implements OnInit {
   }
 
   getUserByUserId(UserId : any){
-    debugger
+    
     const apiUrl = this.apiUrl.apiUrl.user.getUserByUserId + '?UserId=' + UserId
     this.commonService
       .doGet(apiUrl)
