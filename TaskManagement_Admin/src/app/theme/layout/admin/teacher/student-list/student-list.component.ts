@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { UserModel } from 'src/app/core/model/user-model';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StorageService } from 'src/app/core/services/storage.service';
+import { UserMasterComponent } from '../user-master/user-master.component';
 
 @Component({
   selector: 'app-student-list',
@@ -19,6 +21,7 @@ export class StudentListComponent implements OnInit {
     private commonService: CommonService,
     private apiUrl: ApiUrlHelper,
     private router: Router,
+    private modalService: NgbModal 
   ){}
   ngOnInit(): void {
     this.getStudentList()
@@ -38,4 +41,39 @@ export class StudentListComponent implements OnInit {
         }
       })
   }
+
+  openModal(){
+    const modalRef = this.modalService.open(UserMasterComponent , {centered: true});
+    modalRef.result.then((result) =>
+      this.getStudentList()
+    )
+  }
+
+  onEditModal(UserId : BigInt){
+    debugger
+    const modalRef = this.modalService.open(UserMasterComponent , {
+      centered: true
+    })
+    modalRef.componentInstance.data = UserId;
+    modalRef.result.then((result) =>
+      this.getStudentList()
+    )
+  }
+
+  onDeleteUser(UserId : any){
+    debugger
+    const apiUrl = this.apiUrl.apiUrl.user.deleteUser + '?UserId=' + UserId
+    this.commonService
+     .doGet(apiUrl)
+     .pipe()
+     .subscribe({
+        next : (data) => {
+          if(data && data.Success){
+            this.getStudentList()
+            console.log(data.Data)
+          }
+        }
+      })
+  }
+
 }

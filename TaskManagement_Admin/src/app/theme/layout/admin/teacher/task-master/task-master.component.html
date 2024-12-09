@@ -3,19 +3,31 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
 </div>
 <div class="modal-body">
-    <form [formGroup]="taskForm" (ngSubmit)="saveTask()" >
+    <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
         <div class="row">
             <div class="col-12 mt-2">
                 <label for="taskName">Task Name</label>
-                <input type="text" class="form-control" formControlName="taskName" name="taskName" [(ngModel)]="task.TaskName">
+                <input type="text" class="form-control" formControlName="taskName" name="taskName"
+                    [(ngModel)]="task.TaskName">
             </div>
             <div class="col-12 mt-2">
                 <label for="taskDescription">Description</label>
-                <input type="text" class="form-control" formControlName="taskDescription" name="taskDescription" [(ngModel)]="task.Description">
+                <input type="text" class="form-control" formControlName="taskDescription" name="taskDescription"
+                    [(ngModel)]="task.Description">
             </div>
             <div class="col-12 mt-2">
                 <label for="deadline">Task Name</label>
-                <input type="date" class="form-control" formControlName="deadline" name="deadline" [(ngModel)]="task.Deadline">
+                <input type="date" class="form-control" formControlName="deadline" name="deadline"
+                    [(ngModel)]="task.Deadline">
+            </div>
+            <div class="col-12 mt-2">
+                <label for="priority">Task Priority</label>
+                <select class="form-select" aria-label="Default select example" formControlName="priority" [(ngModel)]="task.Priority">
+                    <option value=" " selected>Select Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
             </div>
             <div class="col-12 d-flex justify-content-end mt-3">
                 <button type="submit" class="btn btn-primary" *ngIf="TaskId === 0">Save</button>

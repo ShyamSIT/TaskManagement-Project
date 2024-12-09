@@ -6,7 +6,7 @@
           <a href="javascript:" class="d-flex justify-content-center mt-3">
             <img src="assets/images/logo-dark.svg" />
           </a>
-          <div class="row">
+          <!-- <div class="row">
             <div class="d-flex justify-content-center">
               <div class="auth-header">
                 <h2 class="text-secondary mt-5"><b>Sign up</b></h2>
@@ -20,30 +20,42 @@
           </button>
           <div class="saprator mt-3">
             <span>or</span>
-          </div>
-          <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
+          </div> -->
+          <form [formGroup]="registerForm" (ngSubmit)="doRegister()" novalidate>
             <h5 class="my-4 d-flex justify-content-center">Sign Up with Email address</h5>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="firstName" />
+                  <input type="text" class="form-control" id="floatingInput" formControlName="firstName" />
                   <label for="floatingInput">First Name</label>
+                  <div *ngIf="registerForm.get('firstName').touched && registerForm.get('firstName').invalid">
+                    <span *ngIf="registerForm.get('firstName').hasError('required')" class="text-danger">First Name is required</span>
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="lastName"/>
+                  <input type="text" class="form-control" id="floatingInput" formControlName="lastName"/>
                   <label for="floatingInput">Last Name</label>
+                  <div *ngIf="registerForm.get('lastName').touched && registerForm.get('lastName').invalid">
+                    <span *ngIf="registerForm.get('lastName').hasError('required')" class="text-danger">Last Name is required</span>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email"/>
+              <input type="email" class="form-control" id="floatingInput" formControlName="email"/>
               <label for="floatingInput">Email Address / Username</label>
+              <div *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid">
+                <span *ngIf="registerForm.get('email').hasError('required')" class="text-danger">Email is required</span>
+              </div>
             </div>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="password">
+              <input type="password" class="form-control" id="floatingInput" formControlName="password">
               <label for="floatingInput">Password</label>
+              <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid">
+                <span *ngIf="registerForm.get('password').hasError('required')" class="text-danger">Password is required</span>
+              </div>
             </div>
             <div class="form-check mt-3s">
               <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="" />

@@ -13,6 +13,8 @@ import { StorageKey, StorageService } from 'src/app/core/services/storage.servic
 })
 export default class LoginComponent implements OnInit { 
   loginForm : FormGroup = this.fb.group({});
+  formSubmitted: boolean = false;
+
   constructor(
     private fb : FormBuilder,
     private storageService: StorageService,
@@ -27,13 +29,15 @@ export default class LoginComponent implements OnInit {
 
   initLoginForm() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.maxLength(250)]],
+      email: ['', [Validators.required, Validators.email,Validators.maxLength(250)]],
       password: ['', [Validators.required, Validators.maxLength(250)]],
     });
   }
 
   doLogin() {
+    this.formSubmitted = true;
     if (!this.loginForm.valid) {
+      // this.loginForm.markAllAsTouched();
       return;
     }
     const apiUrl = this.apiUrl.apiUrl.login.loginUser;
@@ -49,6 +53,7 @@ export default class LoginComponent implements OnInit {
         next: (data) => {
         
           if (data.Success && data.Data) {
+            this.formSubmitted = false;
             const LoginDetail = data.Data;
             // if (LoginDetail.Is2FARequired) {
             //   this.commonService.showNotification(

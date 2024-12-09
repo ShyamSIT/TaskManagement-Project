@@ -15,7 +15,8 @@ export class ApiUrlHelper {
             getUserList : 'user/GetUserList',
             getTaskList : 'user/GetTaskList',
             getAssignmentList : 'user/GetAssignmentList',
-            submitAssignment : 'user/SubmitAssignment'
+            submitAssignment : 'user/SubmitAssignment',
+            deleteUser  : 'user/DeleteUser'
         },
         teacher : {
             addUpdateTask : 'teacher/AddUpdateTask',

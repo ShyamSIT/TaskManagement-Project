@@ -10,6 +10,7 @@ import { AssignMasterComponent } from './assign-master/assign-master.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DemoComponent } from './demo/demo.component';
 import { SubmitAssignmentListComponent } from './submit-assignment-list/submit-assignment-list.component';
+import { UserMasterComponent } from './user-master/user-master.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SubmitAssignmentListComponent } from './submit-assignment-list/submit-a
     TaskMasterComponent,
     TaskListComponent,
     AssignMasterComponent,
-    SubmitAssignmentListComponent
+    SubmitAssignmentListComponent,
+    UserMasterComponent
   ],
   imports: [
     CommonModule,

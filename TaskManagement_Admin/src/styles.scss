@@ -45,3 +45,7 @@ File: style.css
 @import 'scss/fonts/phosphor/duotone/style.css';
 
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
+.text-danger {
+    color: red;
+}

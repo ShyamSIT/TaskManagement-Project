@@ -21,7 +21,8 @@ export class TaskMasterComponent implements OnInit {
     TaskName: '',
     Description: '',
     Deadline: new Date(),
-    UserId: 0
+    UserId: 0,
+    Priority: ' '
   };
 
   constructor(
@@ -37,8 +38,6 @@ export class TaskMasterComponent implements OnInit {
 
     this.initialForm();
     if (this.TaskId > 0) {
-
-      console.log('called edit');
       this.getTaskByTaskId(this.TaskId);
     } else
      console.log('called addd');
@@ -48,7 +47,8 @@ export class TaskMasterComponent implements OnInit {
     this.taskForm = this.fb.group({
       taskName: ['', Validators.required],
       taskDescription: ['', Validators.required],
-      deadline: ['', Validators.required]
+      deadline: ['', Validators.required],
+      priority : [' ', Validators.required]
     });
   }
 
@@ -60,7 +60,8 @@ export class TaskMasterComponent implements OnInit {
       TaskName: this.taskForm.value.taskName,
       Description: this.taskForm.value.taskDescription,
       Deadline: this.taskForm.value.deadline,
-      UserId: this.storageService.getValue('UserId')
+      UserId: this.storageService.getValue('UserId'),
+      Priority : this.taskForm.value.priority
     };
     this.commonService
       .doPost(apiUrl, objData)

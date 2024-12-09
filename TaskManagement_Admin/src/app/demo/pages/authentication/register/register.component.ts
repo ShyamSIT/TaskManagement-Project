@@ -12,6 +12,7 @@ import { CommonService } from 'src/app/core/services/common.service';
 })
 export default class RegisterComponent {
   registerForm : FormGroup = this.fb.group({})
+  formSubmitted : boolean = false
 
   constructor(
     private fb : FormBuilder,
@@ -34,6 +35,10 @@ export default class RegisterComponent {
   }
 
   doRegister(){
+    this.formSubmitted = true;
+    if(!this.registerForm.valid){
+      return 
+    }
     const apiUrl = this.apiUrl.apiUrl.user.saveUser
 
     const objData = {
@@ -42,21 +47,20 @@ export default class RegisterComponent {
       Email : this.registerForm.value.email,
       Password : this.registerForm.value.password,
     }
-
-    
-    console.log(objData)
-
     this.commonService
       .doPost(apiUrl, objData)
       .pipe()
       .subscribe({
         next : (data) => {
           if(data && data.Success){
-            console.log(data);
+            this.formSubmitted = false
             // navigate to login page
             this.route.navigate(['/auth/login'])
+          }else{
+            console.log("Email is already exists")
           }
         }
       })
+    // return true;
   }
 }

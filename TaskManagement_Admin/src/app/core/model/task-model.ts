@@ -3,5 +3,6 @@ export interface TaskModel{
     TaskName : string,
     Description : string,
     Deadline : any,
-    UserId : number
+    UserId : number,
+    Priority : string
 }

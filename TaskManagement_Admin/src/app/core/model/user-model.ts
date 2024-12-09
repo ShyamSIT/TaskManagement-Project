@@ -4,6 +4,6 @@ export interface UserModel {
     LastName : string,
     Email : string,
     Password : string,
-    RoleId : string,
+    RoleId : any,
     FullName : string
 }
