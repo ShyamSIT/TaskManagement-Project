@@ -13,6 +13,11 @@ namespace TaskManagement.Service.User
     {
         #region Fields
         private readonly IUserRepository _repository = repository;
+
+        public async Task<long> DeleteUser(long UserId)
+        {
+            return await _repository.DeleteUser(UserId);
+        }
         #endregion
         public async Task<List<AssignmentModel>> GetAssignmentList(long UserId)
         {

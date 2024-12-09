@@ -67,5 +67,13 @@ namespace TaskManagement.Data.DBRepository.User
 
             return await QueryFirstOrDefaultAsync<AssignmentModel>(StoreProcedure.SubmitAssignment, param, commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<long> DeleteUser(long UserId)
+        {
+            var param = new DynamicParameters();
+            param.Add("@UserId", UserId);
+
+            return await QueryFirstOrDefaultAsync<long>(StoreProcedure.DeleteUser, param, commandType: CommandType.StoredProcedure);
+        }
     }
 }

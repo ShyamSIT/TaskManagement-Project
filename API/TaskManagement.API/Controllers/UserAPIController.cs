@@ -166,5 +166,34 @@ namespace TaskManagement.API.Controllers
             return response;
         }
         #endregion
+
+        #region DeleteUser
+        [HttpGet("DeleteUser")]
+        public async Task<ApiPostResponse<string>> DeleteUser(long UserId)
+        {
+            ApiPostResponse<string> response = new();
+            try
+            {
+                var res = await _userService.DeleteUser(UserId);
+                if (res == 1)
+                {
+                    response.Success = true;
+                    response.Data = "Delete User Successfully";
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Data = "Something went to wrong";
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return response;
+        }
+        #endregion
+
     }
 }

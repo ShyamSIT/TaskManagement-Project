@@ -19,6 +19,7 @@ namespace TaskManagement.Common.Helper
         public const string GetUserList = "TM_SP_GetUserList";
         public const string GetAssignmentList = "TM_SP_GetAssignmentList";
         public const string SubmitAssignment = "TM_SP_SubmitAssignment";
+        public const string DeleteUser = "TM_SP_DeleteUser";
         #endregion
 
         #region teacher

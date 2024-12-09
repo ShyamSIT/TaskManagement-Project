@@ -13,5 +13,6 @@ namespace TaskManagement.Model.Model
         public string? Description { get; set; }
         public DateTime Deadline { get; set; }
         public long UserId { get; set; }
+        public string? Priority { get; set; }   
     }
 }

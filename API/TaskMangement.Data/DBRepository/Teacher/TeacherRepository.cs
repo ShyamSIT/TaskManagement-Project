@@ -16,13 +16,17 @@ namespace TaskManagement.Data.DBRepository.Teacher
     {
         public async Task<TaskModel> AddUpdateTask(TaskModel model)
         {
+            if(model.Priority == null)
+            {
+                model.Priority = "Medium";
+            }
             var param = new DynamicParameters();
             param.Add("@TaskId",model.TaskId, DbType.Int64);
             param.Add("@TaskName",model.TaskName);
             param.Add("@Description",model.Description);
             param.Add("@Deadline",model.Deadline);
             param.Add("@UserId",model.UserId, DbType.Int64);
-
+            param.Add("@Priority",model.Priority);
             return await QueryFirstOrDefaultAsync<TaskModel>(StoreProcedure.AddUpdateTask,param,commandType: CommandType.StoredProcedure);
         }
 

@@ -14,7 +14,7 @@ namespace TaskManagement.Service.User
         Task<List<UserDetailModel>> GetUserList();
         Task<List<TaskModel>> GetTaskList();
         Task<List<AssignmentModel>> GetAssignmentList(long UserId);
-
         Task<AssignmentModel> SubmitAssignment(AssignmentModel model);
+        Task<long> DeleteUser(long UserId);
     }
 }

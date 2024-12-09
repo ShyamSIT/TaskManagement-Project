@@ -15,5 +15,6 @@ namespace TaskManagement.Data.DBRepository.User
         Task<List<TaskModel>> GetTaskList();
         Task<List<AssignmentModel>> GetAssignmentList(long UserId);
         Task<AssignmentModel> SubmitAssignment(AssignmentModel model);
+        Task<long> DeleteUser(long UserId);
     }
 }
