@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Data.DBRepository.Login;
+using TaskManagement.Data.DBRepository.ResetToken;
 using TaskManagement.Data.DBRepository.RoleRightMaster;
 using TaskManagement.Data.DBRepository.Teacher;
 using TaskManagement.Data.DBRepository.User;
@@ -18,8 +19,9 @@ namespace TaskManagement.Data
             {
                 { typeof(ILoginRepository), typeof(LoginRepository) },
                 { typeof(IUserRepository), typeof(UserRepostory) },
-                {typeof(ITeacherRepository), typeof(TeacherRepository) },
-                {typeof(IRoleRightsRepository), typeof(RoleRightsRepository) },
+                { typeof(ITeacherRepository), typeof(TeacherRepository) },
+                { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) },
+                { typeof(ITokenRepository), typeof(TokenRepository) },
             };
             return dataDictionary;
         }

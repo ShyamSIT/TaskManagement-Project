@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagement.Data.DBRepository.ResetToken;
 using TaskManagement.Service.Login;
+using TaskManagement.Service.ResetToken;
 using TaskManagement.Service.RoleRightMaster;
 using TaskManagement.Service.Teacher;
 using TaskManagement.Service.User;
@@ -20,6 +22,7 @@ namespace TaskManagement.Service
                 { typeof(IUserService), typeof(UserService) },
                 { typeof(ITeacherService), typeof(TeacherService) },
                 { typeof(IRoleRightsService), typeof(RoleRightsService) },
+                { typeof(ITokenService),typeof(TokenService) }
             };
             return dataDictionary;
         }

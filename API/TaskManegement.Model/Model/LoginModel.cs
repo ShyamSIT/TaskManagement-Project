@@ -16,4 +16,10 @@ namespace TaskManagement.Model.Model
         public long? RoleId { get; set; }
         public string? JwtToken {get;set;}
     }
+
+    public class UserAuthModel : LoginModel
+    {
+        public string? Token { get; set; }
+        public string? NewPassword { get; set; }
+    }
 }
