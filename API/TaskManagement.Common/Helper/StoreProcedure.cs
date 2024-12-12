@@ -10,10 +10,7 @@ namespace TaskManagement.Common.Helper
     {
 
         #region Login
-        public const string LoginUser = "TM_SP_LoginUser";
-        public const string GetUserByEmail = "TM_SP_GetUserByEmail";
-        public const string UpdatePassword = "TM_SP_UpdatePassword";
-        public const string DeleteResetPasswordToken = "TM_SP_DeleteResetPasswordToken";
+        public const string LoginUser  = "TM_SP_LoginUser";
         #endregion
 
         #region user
@@ -37,11 +34,6 @@ namespace TaskManagement.Common.Helper
 
         #region RoleRight
         public const string GetRoleRightsById = "TM_SP_GetRoleRightsById";
-        #endregion
-
-        #region ResetToken
-        public const string AddResetPasswordToken = "TM_Sp_AddResetPasswordToken";
-        public const string GetResetPasswordToken = "TM_SP_GetResetPasswordToken";
         #endregion
 
     }
