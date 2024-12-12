@@ -7,7 +7,9 @@ import { Injectable } from "@angular/core";
 export class ApiUrlHelper {
     public apiUrl = {
         login : { 
-            loginUser : 'login/LoginUser' 
+            loginUser : 'login/LoginUser',
+            forgetPassword : 'login/ForgetPassword',
+            resetPassword : 'login/ResetPassword', 
         },
         user : {
             saveUser : 'user/SaveUser',

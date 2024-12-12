@@ -46,7 +46,7 @@
                 <label class="form-check-label text-muted" for="customCheckc1">Remember me</label>
               </div>
               <h5 class="text-secondary">
-                <a href="javascript:">Forgot Password?</a>
+                <a href="javascript:" [routerLink]="['/auth/forget-password']">Forgot Password?</a>
               </h5>
             </div>
             <div class="d-grid mt-4" >
@@ -54,7 +54,7 @@
             </div>
             <hr />
             <h5 class="d-flex justify-content-center">
-              <a [routerLink]=" '/auth/register' ">Don't have an account?</a>
+              <a [routerLink]="['/auth/register'] ">Don't have an account?</a>
             </h5>
           </form>
         </div>

@@ -15,7 +15,22 @@ import { AssignMasterComponent } from '../assign-master/assign-master.component'
 export class TaskListComponent implements OnInit {
 
   tasklist : TaskModel[] = [];
+  priorities = [
+    {id: 1, name: 'High'},
+    {id: 2, name: 'Medium'},
+    {id: 3, name: 'Low'},
+  ];
 
+  OnChangeSelectPriority(event : any){
+    if(event !== undefined){
+      const priority = event.name
+      this.tasklist = this.tasklist.filter(task => task.Priority === priority)
+    }else{
+      this.getTaskList()
+    }
+  }
+
+  
   constructor(
     private apiUrl : ApiUrlHelper,
     private commonService : CommonService,

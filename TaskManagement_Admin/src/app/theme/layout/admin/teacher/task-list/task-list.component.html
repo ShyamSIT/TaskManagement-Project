@@ -1,7 +1,14 @@
-<div>
-    <button class="btn btn-primary mb-2 me-2" (click)="openModal()">
-       Add Task
+<div class="d-flex align-items-center mb-2">
+    <button class="btn btn-primary me-2" (click)="openModal()">
+        Add Task
     </button>
+    <div class="m-2">
+        <ng-select [items]="priorities"
+        bindLabel="name"
+        placeholder="Priority"
+        (change)="OnChangeSelectPriority($event)">
+</ng-select>
+    </div>
 </div>
     
 
@@ -21,9 +28,11 @@
             <td>{{t.Deadline | date :'dd/MM/yyyy'}}</td>
             <td>
                 <div>
-                    <button class="btn btn-success btn-sm mx-2" (click)="onTaskEdit(t.TaskId)"><i class="ti ti-edit"></i> Edit </button>
+                    <button class="btn btn-success btn-sm mx-2" (click)="onTaskEdit(t.TaskId)"><i
+                            class="ti ti-edit"></i> Edit </button>
                     <button class="btn btn-secondary btn-sm mx-2" (click)="onAssignTask(t.TaskId)">Assign Task</button>
-                    <button class="btn btn-danger btn-sm" (click)="onDeleteTask(t.TaskId)"><i class="ti ti-trash"></i> Delete </button>
+                    <button class="btn btn-danger btn-sm" (click)="onDeleteTask(t.TaskId)"><i class="ti ti-trash"></i>
+                        Delete </button>
                 </div>
             </td>
         </tr>

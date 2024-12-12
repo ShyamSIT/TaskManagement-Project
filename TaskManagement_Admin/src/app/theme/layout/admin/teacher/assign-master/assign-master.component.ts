@@ -8,6 +8,7 @@ import { UserModel } from 'src/app/core/model/user-model';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { DemoComponent } from '../demo/demo.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assign-master',
@@ -27,7 +28,8 @@ export class AssignMasterComponent implements OnInit {
     private fb: FormBuilder,
     private apiUrl: ApiUrlHelper,
     private commonService: CommonService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private route : Router
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +47,13 @@ export class AssignMasterComponent implements OnInit {
   }
 
   onSubmit(){
+
+    const jwttoken = this.storageService.getValue('JwtToken')
+    if(!jwttoken){
+      this.route.navigate['/auth/login']
+      return
+    }
+
     const apiUrl = this.apiUrl.apiUrl.teacher.assignTask
     const objData = {
       TaskId : this.form.value.TaskId,

@@ -30,7 +30,8 @@ export class TaskMasterComponent implements OnInit {
     private fb: FormBuilder,
     private apiUrl: ApiUrlHelper,                                             
     private commonService: CommonService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router : Router
   ) {}                                                                                                      
 
   ngOnInit(): void {
@@ -53,6 +54,14 @@ export class TaskMasterComponent implements OnInit {
   }
 
   saveTask() {
+    debugger
+    const jwttoken = this.storageService.getValue('JwtToken')
+    if(!jwttoken){
+      this.modalRef.close();
+      this.router.navigate(['/auth/login'])
+      return
+    }
+
     const apiUrl = this.apiUrl.apiUrl.teacher.addUpdateTask;
 
     const objData = {

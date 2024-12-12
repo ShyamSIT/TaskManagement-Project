@@ -26,7 +26,7 @@ const routes: Routes = [
     path : 'assignment-list',
     component : SubmitAssignmentListComponent,
     canActivate : [canActivate]   
-  }
+  },
 ];
 
 @NgModule({
