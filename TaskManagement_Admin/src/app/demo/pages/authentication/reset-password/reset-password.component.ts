@@ -30,10 +30,19 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   initialResetPasswordForm() {
-    this.resetPasswordForm = this.fb.group({
+    this.resetPasswordForm = this.fb.group(
+      {
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
-    });
+      },
+      { validator: this.passwordsMatchValidator }
+  );
+  }
+
+  passwordsMatchValidator(form: FormGroup): { [key: string]: boolean } | null {
+    const password = form.get('newPassword')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
   onSubmit() {
