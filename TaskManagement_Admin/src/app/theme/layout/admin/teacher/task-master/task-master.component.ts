@@ -24,6 +24,7 @@ export class TaskMasterComponent implements OnInit {
     UserId: 0,
     Priority: ' '
   };
+  formSubmitted : boolean = false
 
   constructor(
     public modalRef: NgbActiveModal,
@@ -49,7 +50,7 @@ export class TaskMasterComponent implements OnInit {
       taskName: ['', Validators.required],
       taskDescription: ['', Validators.required],
       deadline: ['', Validators.required],
-      priority : [' ', Validators.required]
+      priority : ['', Validators.required]
     });
   }
 
@@ -61,6 +62,10 @@ export class TaskMasterComponent implements OnInit {
       return
     }
 
+    this.formSubmitted = true;
+    if(!this.taskForm.valid) {
+      return
+    }
     const apiUrl = this.apiUrl.apiUrl.teacher.addUpdateTask;
 
     const objData = {
@@ -75,6 +80,7 @@ export class TaskMasterComponent implements OnInit {
       .doPost(apiUrl, objData)
       .pipe()
       .subscribe((data) => {
+        this.formSubmitted = false
         console.log(data.Data);
       });
     
@@ -91,6 +97,10 @@ export class TaskMasterComponent implements OnInit {
           if (data && data.Success && data.Data) {
             this.task = data.Data;
             this.task.Deadline = this.task.Deadline.toString().split('T')[0];
+            this.taskForm.patchValue({
+              deadline: this.task.Deadline,
+              priority : this.task.Priority
+            });
           }
         }
       });
