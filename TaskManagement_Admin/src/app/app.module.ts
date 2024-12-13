@@ -18,10 +18,11 @@ import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/na
 import { SharedModule } from './theme/shared/shared.module';
 import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { canActivate } from './guard/auth.guard';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     GuestComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule , HttpClientModule,NgbModule,NgSelectModule],
-  providers: [NavigationItem,canActivate],
+  providers: [
+    NavigationItem,
+    canActivate,
+    { provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor,multi : true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -54,7 +54,6 @@ export class TaskMasterComponent implements OnInit {
   }
 
   saveTask() {
-    debugger
     const jwttoken = this.storageService.getValue('JwtToken')
     if(!jwttoken){
       this.modalRef.close();
