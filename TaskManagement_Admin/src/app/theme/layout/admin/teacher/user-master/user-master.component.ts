@@ -26,6 +26,7 @@ export class UserMasterComponent implements OnInit {
     RoleId : BigInt(0),
     FullName : ""
   }
+  formSubmitted : boolean = false
 
   constructor(
     public modalRef: NgbActiveModal,
@@ -47,6 +48,8 @@ export class UserMasterComponent implements OnInit {
     }
   }
 
+ 
+
   initRegisterForm(){
     this.userForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.maxLength(250)]],
@@ -57,9 +60,11 @@ export class UserMasterComponent implements OnInit {
   }
 
   adduser(){
+    this.formSubmitted =  true;
     if(!this.userForm.valid) {
       return
     }
+
     const apiUrl = this.apiUrl.apiUrl.user.saveUser
 
     const objData = {
@@ -76,6 +81,8 @@ export class UserMasterComponent implements OnInit {
       .subscribe({
         next : (data) => {
           if(data && data.Success){
+            this.formSubmitted = false
+            this.modalRef.close();
           }
         }
       })
@@ -93,6 +100,10 @@ export class UserMasterComponent implements OnInit {
         next : (data) => {
           if(data && data.Data){
             this.user = data.Data
+
+            // this.userForm.patchValue({
+            //   password : this.user.Password
+            // })
           }
         }
       })

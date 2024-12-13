@@ -8,20 +8,39 @@
         <div class="row">
             <div class="col-12 mt-2">
                 <label for="firstName">First Name</label>
-                <input type="text" class="form-control" formControlName="firstName" name="firstName" [(ngModel)]="user.FirstName">
-
+                <input type="text" class="form-control" formControlName="firstName" name="firstName"
+                    [(ngModel)]="user.FirstName">
+                <div *ngIf="(formSubmitted || userForm.get('firstName').touched )&& userForm.get('firstName').invalid">
+                    <span *ngIf="userForm.get('firstName').hasError('required')" class="text-danger">First Name is
+                        required</span>
+                </div>
             </div>
             <div class="col-12 mt-2">
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" formControlName="lastName" name="lastName" [(ngModel)]="user.LastName">
+                <input type="text" class="form-control" formControlName="lastName" name="lastName"
+                    [(ngModel)]="user.LastName">
+                <div *ngIf="(formSubmitted || userForm.get('lastName').touched )&& userForm.get('lastName').invalid">
+                    <span *ngIf="userForm.get('lastName').hasError('required')" class="text-danger">Last Name is
+                        required</span>
+                </div>
             </div>
             <div class="col-12 mt-2">
                 <label for="email">Email </label>
-                <input type="text" class="form-control" formControlName="email" name="email" [(ngModel)]="user.Email" autocomplete="off">
+                <input type="text" class="form-control" formControlName="email" name="email" [(ngModel)]="user.Email"
+                    autocomplete="off">
+                <div *ngIf="(formSubmitted || userForm.get('email').touched )&& userForm.get('email').invalid">
+                    <span *ngIf="userForm.get('email').hasError('required')" class="text-danger">Email is
+                        required</span>
+                </div>
             </div>
             <div class="col-12 mt-2">
                 <label for="password">Password </label>
-                <input type="text" class="form-control" formControlName="password" name="password" [(ngModel)]="user.Password" >
+                <input class="form-control" type="password" formControlName="password"
+                    name="password" [(ngModel)]="user.Password">
+                <div *ngIf="(formSubmitted || userForm.get('password').touched )&& userForm.get('password').invalid">
+                    <span *ngIf="userForm.get('password').hasError('required')" class="text-danger">Passowrd is
+                        required</span>
+                </div>
             </div>
         </div>
 
