@@ -6,6 +6,8 @@ import { CommonService } from 'src/app/core/services/common.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { TaskMasterComponent } from '../task-master/task-master.component';
 import { AssignMasterComponent } from '../assign-master/assign-master.component';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-task-list',
@@ -35,7 +37,8 @@ export class TaskListComponent implements OnInit {
     private apiUrl : ApiUrlHelper,
     private commonService : CommonService,
     private storageService: StorageService,
-    private modalService: NgbModal 
+    private modalService: NgbModal,
+    private toastr : ToastrService 
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +63,7 @@ export class TaskListComponent implements OnInit {
   openModal(){
     const modalRef = this.modalService.open(TaskMasterComponent,{centered:true})
     modalRef.result.then((result) => {
+      this.toastr.success("Added task Successfully")
       this.getTaskList()
     })
   }
@@ -70,6 +74,7 @@ export class TaskListComponent implements OnInit {
     })
     modalRef.componentInstance.data = TaskId
     modalRef.result.then((result) => {
+      this.toastr.success("Added task Successfully")
       this.getTaskList()
     })
   }

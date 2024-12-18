@@ -29,7 +29,7 @@ namespace TaskManagement.API.Controllers
                 {
                     response.Data = taskModel;
                     response.Success = true;
-                    response.Message = "register successfully";
+                    response.Message = "Added or Updated successfully";
 
                 }
                 else

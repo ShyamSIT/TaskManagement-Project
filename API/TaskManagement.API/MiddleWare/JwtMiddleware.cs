@@ -38,7 +38,6 @@ namespace TaskManagement.API.MiddleWare
                 var userId = jwtToken.Claims.First(x => x.Type == "LoggedInUserId").Value;
 
                 context.Items["User"] = new { userId, userEmail };
-
                
             }
 
