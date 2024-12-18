@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StorageService } from 'src/app/core/services/storage.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -20,7 +20,8 @@ export class ResetPasswordComponent implements OnInit {
     private commonService: CommonService,
     private apiUrl: ApiUrlHelper,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
   
   ngOnInit(): void {
@@ -63,9 +64,10 @@ export class ResetPasswordComponent implements OnInit {
         next: (data) => {
           this.formSubmitted = false;
           if (data && data.Success) {
-            alert(data.Message);
+            this.toastr.success(data.Message)
           } else {
-            alert(data.Message);
+            this.toastr.error(data.Message)
+            this.router.navigate(['/auth/login']);
           }
         },
         error: (error) => {

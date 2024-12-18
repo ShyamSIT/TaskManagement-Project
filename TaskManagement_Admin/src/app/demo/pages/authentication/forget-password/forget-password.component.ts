@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StorageService } from 'src/app/core/services/storage.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -21,6 +21,7 @@ export class ForgetPasswordComponent implements OnInit {
     private commonService: CommonService,
     private apiUrl: ApiUrlHelper,
     private router: Router,
+    private toastr: ToastrService  
   ){}
 
   ngOnInit(): void {
@@ -51,10 +52,9 @@ export class ForgetPasswordComponent implements OnInit {
         next: (data) => {
           this.formSubmitted = false;
           if(data && data.Success){
-            // this.router.navigate(['/auth/login'])
-            alert(data.Message);
+            this.toastr.success(data.Message);
           }else{
-            alert(data.Message)
+            this.toastr.error(data.Message);
           }
         },
         error: (error) => {

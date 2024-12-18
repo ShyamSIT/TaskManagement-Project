@@ -23,7 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { canActivate } from './guard/auth.guard';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +40,21 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     ConfigurationComponent,
     GuestComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule , HttpClientModule,NgbModule,NgSelectModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    SharedModule, 
+    BrowserAnimationsModule , 
+    HttpClientModule,
+    NgbModule,
+    NgSelectModule,
+    ToastrModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    })
+  ],
   providers: [
     NavigationItem,
     canActivate,

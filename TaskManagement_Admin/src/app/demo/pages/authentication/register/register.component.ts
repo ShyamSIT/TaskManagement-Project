@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { CommonService } from 'src/app/core/services/common.service';
-
+import { ToastrService  } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,7 +18,8 @@ export default class RegisterComponent {
     private fb : FormBuilder,
     private apiUrl : ApiUrlHelper,
     private commonService : CommonService,
-    private route : Router  // injecting router to navigate to login page  // import { Router } from '@angular/router';
+    private route : Router ,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -54,9 +55,11 @@ export default class RegisterComponent {
         next : (data) => {
           if(data && data.Success){
             this.formSubmitted = false
+            this.toastr.success(data.Message)
             // navigate to login page
             this.route.navigate(['/auth/login'])
           }else{
+            this.toastr.error(data.Message)
             console.log("Email is already exists")
           }
         }

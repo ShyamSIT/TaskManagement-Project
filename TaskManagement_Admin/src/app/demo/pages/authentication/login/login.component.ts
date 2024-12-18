@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StorageKey, StorageService } from 'src/app/core/services/storage.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +14,7 @@ import { StorageKey, StorageService } from 'src/app/core/services/storage.servic
 export default class LoginComponent implements OnInit { 
   loginForm : FormGroup = this.fb.group({});
   formSubmitted: boolean = false;
+  showPassword = false;
 
   constructor(
     private fb : FormBuilder,
@@ -21,6 +22,7 @@ export default class LoginComponent implements OnInit {
     private commonService: CommonService,
     private apiUrl: ApiUrlHelper,
     private router: Router,
+    private toastr : ToastrService
   ){}
   ngOnInit(): void {
     this.storageService.clearStorage();
@@ -34,6 +36,9 @@ export default class LoginComponent implements OnInit {
     });
   }
 
+   togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
   doLogin() {
     this.formSubmitted = true;
     if (!this.loginForm.valid) {
@@ -82,9 +87,10 @@ export default class LoginComponent implements OnInit {
               }
               this.storageService.setValue(StorageKey.loginData, loginData);
             }
-             
+            this.toastr.success(data.Message); 
             // navigate to teacher module or user module
             if(LoginDetail.RoleId === 1){
+
               this.router.navigate(['/teacher/task-list']) 
             }else{  
               this.router.navigate(['/user/assignment-list'])
@@ -95,11 +101,12 @@ export default class LoginComponent implements OnInit {
             //   data.Message,
             //   NotificationType.ERROR,
             // );
-
+            this.toastr.error(data.Message)
             console.log(data)
           }
         },
         error: (err) => {
+          this.toastr.error(err.message);
           console.error(err);
         },
         complete: () => {

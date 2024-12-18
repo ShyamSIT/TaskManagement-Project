@@ -3,9 +3,9 @@
     <div class="auth-form">
       <div class="card my-5">
         <div class="card-body">
-          <a href="#" class="d-flex justify-content-center">
+          <!-- <p href="#" class="d-flex justify-content-center">
             <img src="assets/images/logo-dark.svg" />
-          </a>
+          </p> -->
           <div class="row">
             <div class="d-flex justify-content-center">
               <div class="auth-header">
@@ -27,18 +27,24 @@
           <form [formGroup]="loginForm" (submit)="doLogin()" novalidate>
             <h5 class="my-4 d-flex justify-content-center">Sign in with Email address</h5>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" formControlName="email" autocomplete="off" placeholder="Enter your Email" />
+              <input type="email" class="form-control" id="floatingInput" formControlName="email" autocomplete="off"
+                placeholder="Enter your Email" />
               <label for="floatingInput">Email address / Username</label>
               <div *ngIf="(formSubmitted || loginForm.get('email').touched )&& loginForm.get('email').invalid">
                 <span *ngIf="loginForm.get('email').hasError('required')" class="text-danger">Email is required</span>
               </div>
             </div>
-            <div class="form-floating mb-3">
-              <input type="password" class="form-control" id="password" formControlName="password" autocomplete="off" placeholder="Enter Your Password"/>
+            <div class="form-floating mb-3 position-relative">
+              <input [type]="showPassword ? 'text' : 'password' " class="form-control" id="password" formControlName="password" autocomplete="off"
+                placeholder="Enter Your Password" />
               <label for="password">Password</label>
               <div *ngIf="(formSubmitted || loginForm.get('password').touched ) && loginForm.get('password').invalid">
-                <span *ngIf="loginForm.get('password').hasError('required')" class="text-danger">Password is required</span>
+                <span *ngIf="loginForm.get('password').hasError('required')" class="text-danger">Password is
+                  required</span>
               </div>
+              <span class="position-absolute end-0 top-50 translate-middle-y me-3" (click)="togglePasswordVisibility()">
+                <i [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </span>
             </div>
             <div class="d-flex mt-1 justify-content-between">
               <div class="form-check">
@@ -49,7 +55,7 @@
                 <a href="javascript:" [routerLink]="['/auth/forget-password']">Forgot Password?</a>
               </h5>
             </div>
-            <div class="d-grid mt-4" >
+            <div class="d-grid mt-4">
               <button type="submit" class="btn btn-secondary">Sign In</button>
             </div>
             <hr />

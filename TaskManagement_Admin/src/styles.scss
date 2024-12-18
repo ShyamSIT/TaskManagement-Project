@@ -45,6 +45,7 @@ File: style.css
 @import 'scss/fonts/phosphor/duotone/style.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import "ngx-toastr/toastr";
 
 .text-danger {
     color: red;
