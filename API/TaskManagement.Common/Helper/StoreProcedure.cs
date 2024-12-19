@@ -33,6 +33,8 @@ namespace TaskManagement.Common.Helper
         public const string GetAllUsersByNotAssignTask = "TM_SP_GetAllUsersByNotAssignTask";
         public const string GetAssignmentListByTeacherId = "TM_SP_GetAssignmentListByTeacherId";
         public const string DeleteTask = "TM_SP_DeleteTask";
+        public const string SaveFile = "TM_SP_SaveFile";
+        public const string GetFileListByTeacherId = "TM_SP_GetFileListByUserId";
         #endregion
 
         #region RoleRight

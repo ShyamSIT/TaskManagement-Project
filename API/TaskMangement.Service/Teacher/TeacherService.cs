@@ -37,6 +37,11 @@ namespace TaskManagement.Service.Teacher
             return await _repository.GetAssignmentListByTeacherId(UserId);
         }
 
+        public async Task<List<FileModel>> GetFileListByTeacherId(long UserId)
+        {
+            return await _repository.GetFileListByTeacherId(UserId);
+        }
+
         public async Task<TaskModel> GetTaskByTaskId(long TaskId)
         {
             return await _repository.GetTaskByTaskId(TaskId);
@@ -45,6 +50,11 @@ namespace TaskManagement.Service.Teacher
         public async Task<List<TaskModel>> GetTaskList(long UserId)
         {
             return await _repository.GetTaskList(UserId);
+        }
+
+        public async Task<FileModel> SaveFile(FileModel fileModel)
+        { 
+            return await _repository.SaveFile(fileModel);
         }
     }
 }

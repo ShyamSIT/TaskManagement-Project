@@ -11,16 +11,19 @@ namespace TaskManagement.API.Controllers
     [ApiController]
     [Authorize]
     public class TeacherController(
-        ITeacherService teacherService) : ControllerBase
+        ITeacherService teacherService,
+        IWebHostEnvironment environment) : ControllerBase
     {
         #region fields
         private readonly ITeacherService _teacherService = teacherService;
+        private readonly IWebHostEnvironment _environment = environment;
         #endregion
 
         #region AddUpdateTask
         [HttpPost("AddUpdateTask")]
         public async Task<ApiPostResponse<TaskModel>> AddUpdateTask(TaskModel model)
         {
+            
             ApiPostResponse<TaskModel> response = new();
             try
             {
@@ -30,7 +33,6 @@ namespace TaskManagement.API.Controllers
                     response.Data = taskModel;
                     response.Success = true;
                     response.Message = "Added or Updated successfully";
-
                 }
                 else
                 {
@@ -55,6 +57,7 @@ namespace TaskManagement.API.Controllers
             ApiResponse<TaskModel> response = new() { Data = [] };
             try
             {
+                
                 List<TaskModel> list = await _teacherService.GetTaskList(UserId);
                 response.Data = list;
                 response.Success = true;
@@ -185,5 +188,103 @@ namespace TaskManagement.API.Controllers
             return response;    
         }
         #endregion
+
+        #region Upload
+        [HttpPost("UploadFile")]
+        public async Task<BaseApiResponse> UploadFile(IFormFile file,[FromForm] FileModel fileModel)
+        {
+            BaseApiResponse response = new();
+            try
+            {
+                if(file.Length < 0)
+                {
+                    response.Success = false;
+                    response.Message = "Please Upload the file first!!";
+                    return response;
+                }
+                //save file in backend 
+                await SaveFileAsync(file);
+
+                //save filename in database
+                fileModel.FileName = file.FileName;
+                FileModel res = await _teacherService.SaveFile(fileModel);
+
+                if(res != null && res.FileId > 0)
+                {
+                    response.Success = true;
+                    response.Message = "File Upload Successfully";
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Can't Duplicate file upload!";
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                response.Success = false;
+                response.Message =  ex.Message;
+            }
+
+            return response;
+        }
+        #endregion
+
+        #region GetFileListByTeacherId
+        [HttpGet("GetFileListByTeacherId")]
+        public async Task<ApiResponse<FileModel>> GetFileListByTeacherId(long UserId)
+        {
+            ApiResponse<FileModel> response = new() { Data = [] };
+
+            try
+            {
+                var files = await _teacherService.GetFileListByTeacherId(UserId);
+                response.Data = files;
+                response.Success = true;
+                response.Message = "Get File list";
+            }
+            catch (Exception ex)
+            {
+
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+        #endregion
+
+        #region ConvertingFileToString
+        [NonAction]
+        public async Task<bool> SaveFileAsync(IFormFile file)
+        {
+
+            try
+            {
+
+                string uploadPath = Path.Combine(_environment.WebRootPath, "UploadFiles");
+                if (!Directory.Exists(uploadPath))
+                {
+                    Directory.CreateDirectory(uploadPath);
+                }
+                string filePath = Path.Combine(uploadPath, file.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+        #endregion
+
+        
     }
 }

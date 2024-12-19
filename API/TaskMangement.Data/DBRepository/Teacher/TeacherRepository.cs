@@ -85,6 +85,15 @@ namespace TaskManagement.Data.DBRepository.Teacher
             return data.ToList();
         }
 
+        public async Task<List<FileModel>> GetFileListByTeacherId(long UserId)
+        {
+            var param = new DynamicParameters();
+            param.Add("@UserId", UserId);
+
+            var data = await QueryAsync<FileModel>(StoreProcedure.GetFileListByTeacherId, param);
+            return data.ToList();
+        }
+
         public async Task<TaskModel> GetTaskByTaskId(long TaskId)
         {
             var param = new DynamicParameters();
@@ -99,6 +108,17 @@ namespace TaskManagement.Data.DBRepository.Teacher
             param.Add("UserId", UserId);
             var data = await QueryAsync<TaskModel>(StoreProcedure.GetTaskList, param,commandType: CommandType.StoredProcedure);
             return data.ToList();
+        }
+
+        public async Task<FileModel> SaveFile(FileModel fileModel)
+        {
+            var param = new DynamicParameters();
+            param.Add("@FileName", fileModel.FileName);
+            param.Add("@@UserId", fileModel.UserId);
+            param.Add("@TaskId", fileModel.TaskId);
+
+            return await QueryFirstOrDefaultAsync<FileModel>(StoreProcedure.SaveFile, param, commandType: CommandType.StoredProcedure);
+
         }
     }
 }

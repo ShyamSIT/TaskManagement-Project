@@ -16,5 +16,7 @@ namespace TaskManagement.Service.Teacher
         Task<List<UserDetailModel>> GetAllUsersByNotAssignTask(long TaskId);
         Task<List<AssignmentModel>> GetAssignmentListByTeacherId(long UserId);
         Task<long> DeleteTask(long TaskId);
+        Task<FileModel> SaveFile(FileModel fileModel);
+        Task<List<FileModel>> GetFileListByTeacherId(long UserId);
     }
 }
