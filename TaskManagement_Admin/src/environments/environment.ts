@@ -8,6 +8,7 @@ export const environment = {
   appVersion: packageInfo.version,
   production: false,
   apiUrl: 'http://localhost:5077/api/',
+  baseUrl : 'http://localhost:5077'
 };
 
 /*

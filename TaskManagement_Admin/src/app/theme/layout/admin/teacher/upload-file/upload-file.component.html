@@ -1,0 +1,16 @@
+<div class="container-fiuld d-flex justify-content-center">
+    <div class="card" style="width: 100rem;">
+        <div class="card-body">
+          <h5 class="card-title">Upload Files</h5>
+          <p>Hi {{TaskId}}</p>
+
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <div class="mb-3 border border-1 p-3 ">
+              <label for="fileInput" class="form-label">Choose a file</label>
+              <input type="file" class="form-control" id="fileInput" (change)="onFileSelected($event)">
+            </div>
+            <button type="submit" class="btn btn-primary" >Upload</button>
+          </form>
+        </div>
+      </div>
+</div>

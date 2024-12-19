@@ -7,6 +7,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
 import { TaskMasterComponent } from '../task-master/task-master.component';
 import { AssignMasterComponent } from '../assign-master/assign-master.component';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -38,11 +39,13 @@ export class TaskListComponent implements OnInit {
     private commonService : CommonService,
     private storageService: StorageService,
     private modalService: NgbModal,
-    private toastr : ToastrService 
-  ) { }
+    private toastr : ToastrService,
+    private route : Router 
+  ) {  }
 
   ngOnInit(): void {
     this.getTaskList()
+    
   }
   
   getTaskList(){
@@ -59,6 +62,7 @@ export class TaskListComponent implements OnInit {
       }
      })
   }
+
 
   openModal(){
     const modalRef = this.modalService.open(TaskMasterComponent,{centered:true})
@@ -98,5 +102,9 @@ export class TaskListComponent implements OnInit {
           }
         }
      })
+  }
+
+  OnUpload(TaskId: any){
+    this.route.navigate(['/teacher/upload-file',TaskId])
   }
 }

@@ -11,6 +11,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { DemoComponent } from './demo/demo.component';
 import { SubmitAssignmentListComponent } from './submit-assignment-list/submit-assignment-list.component';
 import { UserMasterComponent } from './user-master/user-master.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { FileListComponent } from './file-list/file-list.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { UserMasterComponent } from './user-master/user-master.component';
     TaskListComponent,
     AssignMasterComponent,
     SubmitAssignmentListComponent,
-    UserMasterComponent
+    UserMasterComponent,
+    UploadFileComponent,
+    FileListComponent
   ],
   imports: [
     CommonModule,

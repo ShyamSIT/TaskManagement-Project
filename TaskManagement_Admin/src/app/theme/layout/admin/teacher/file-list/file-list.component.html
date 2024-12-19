@@ -1,0 +1,17 @@
+<table class="table table-striped table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>Task Name</th>
+            <th>File Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let file of FileList">
+            <td>{{ file.TaskName }}</td>
+            <td>{{ file.FileName }}</td>
+            <td>Action</td>
+        </tr>
+    </tbody>
+</table>

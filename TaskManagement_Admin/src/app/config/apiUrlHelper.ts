@@ -27,7 +27,9 @@ export class ApiUrlHelper {
             assignTask : 'teacher/AssignTask',
             getAllUsersByNotAssignTask : 'teacher/GetAllUsersByNotAssignTask',
             getAssignmentListByTeacherId : 'teacher/GetAssignmentListByTeacherId',
-            deleteTask : 'teacher/DeleteTask'
+            deleteTask : 'teacher/DeleteTask',
+            uploadFile : 'teacher/UploadFile',
+            getFileListByTeacherId : 'teacher/GetFileListByTeacherId',
         },
         roleRight : {
             getRoleRightsById : 'roleRight/GetRoleRightsById',
