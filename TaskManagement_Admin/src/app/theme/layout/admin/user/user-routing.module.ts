@@ -4,6 +4,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { canActivate } from 'src/app/guard/auth.guard';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
+import { FileListComponent } from './file-list/file-list.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path :'assignment-list',
     component : AssignmentListComponent,
+    canActivate : [canActivate]
+  },
+  {
+    path : 'file-list',
+    component : FileListComponent,
     canActivate : [canActivate]
   }
 ];

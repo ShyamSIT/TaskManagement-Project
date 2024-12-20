@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>Task Name</th>
+            <th>File Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let file of FileList">
+            <td>{{ file.TaskName }}</td>
+            <td>
+                <a class="text-primary" (click)="OnViewPdf(file.FileName)" style="cursor: pointer;">{{file.FileName}} </a>
+            </td>
+            <td>
+                <button class="btn btn-primary">Download</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

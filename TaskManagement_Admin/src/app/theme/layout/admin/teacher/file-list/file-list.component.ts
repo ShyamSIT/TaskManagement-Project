@@ -28,6 +28,7 @@ export class FileListComponent implements OnInit {
 
   FileList = []
   filePath : any = null
+  
   getFileList() {
     const UserId = this.storageService.getValue('UserId');
     const apiUrl = this.apiUrl.apiUrl.teacher.getFileListByTeacherId + '?UserId=' + UserId;

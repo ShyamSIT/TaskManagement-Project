@@ -24,6 +24,7 @@ import { canActivate } from './guard/auth.guard';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
