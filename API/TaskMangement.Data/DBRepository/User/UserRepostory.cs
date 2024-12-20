@@ -75,5 +75,13 @@ namespace TaskManagement.Data.DBRepository.User
 
             return await QueryFirstOrDefaultAsync<long>(StoreProcedure.DeleteUser, param, commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<FileModel> GetFileByFileId(long FileId)
+        {
+            var param = new DynamicParameters();
+            param.Add("@FileId", FileId);
+
+            return await QueryFirstOrDefaultAsync<FileModel>(StoreProcedure.GetFileByFileId, param, commandType: CommandType.StoredProcedure);
+        }
     }
 }

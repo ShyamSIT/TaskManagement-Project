@@ -23,6 +23,7 @@ namespace TaskManagement.Common.Helper
         public const string GetAssignmentList = "TM_SP_GetAssignmentList";
         public const string SubmitAssignment = "TM_SP_SubmitAssignment";
         public const string DeleteUser = "TM_SP_DeleteUser";
+        public const string GetFileByFileId = "TM_SP_GetFileByFileId";
         #endregion
 
         #region teacher

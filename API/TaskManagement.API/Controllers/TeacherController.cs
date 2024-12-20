@@ -285,6 +285,16 @@ namespace TaskManagement.API.Controllers
         }
         #endregion
 
-        
+        #region ViewUploadPdf
+        [HttpGet("ViewPdf")]
+        public async Task<ApiPostResponse<string>> ViewPdf(string FileName)
+        {
+            var filePath = Path.Combine("UploadFiles",FileName);
+            ApiPostResponse<string> response = new();
+            response.Data = filePath;
+            return response;
+
+        }
+        #endregion
     }
 }

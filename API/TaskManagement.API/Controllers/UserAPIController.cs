@@ -53,8 +53,9 @@ namespace TaskManagement.API.Controllers
             try
             {
                 UserDetailModel userDetailModel = await _userService.SaveUser(model);
-        
-                if(userDetailModel != null && userDetailModel.UserId > 0) {
+
+                if (userDetailModel != null && userDetailModel.UserId > 0)
+                {
                     response.Data = userDetailModel;
                     response.Success = true;
                     response.Message = "register successfully";
@@ -85,7 +86,7 @@ namespace TaskManagement.API.Controllers
             {
                 List<UserDetailModel> users = await _userService.GetUserList();
                 response.Data = users;
-                response.Success = true;    
+                response.Success = true;
             }
             catch (Exception)
             {
@@ -146,7 +147,7 @@ namespace TaskManagement.API.Controllers
             try
             {
                 AssignmentModel assignment = await _userService.SubmitAssignment(model);
-                if(assignment != null && assignment.AssignmentId > 0)
+                if (assignment != null && assignment.AssignmentId > 0)
                 {
                     response.Success = true;
                     response.Data = assignment;
@@ -194,6 +195,5 @@ namespace TaskManagement.API.Controllers
             return response;
         }
         #endregion
-
     }
 }
