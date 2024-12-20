@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StorageService } from 'src/app/core/services/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-file-list',
@@ -16,7 +18,8 @@ export class FileListComponent implements OnInit {
     private commonService: CommonService,
     private storageService: StorageService,
     private toastr: ToastrService,
-    private route: Router
+    private route: Router,
+    private sanitizer : DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -24,7 +27,7 @@ export class FileListComponent implements OnInit {
   }
 
   FileList = []
-
+  filePath : any = null
   getFileList() {
     const UserId = this.storageService.getValue('UserId');
     const apiUrl = this.apiUrl.apiUrl.teacher.getFileListByTeacherId + '?UserId=' + UserId;
@@ -40,4 +43,22 @@ export class FileListComponent implements OnInit {
         }
       })
   }
+
+  onDownload(FileId : any){
+    
+  }
+
+  OnViewPdf(FileName : any){
+    const apiUrl = this.apiUrl.apiUrl.teacher.viewPdf + '?FileName=' + FileName;
+
+    this.commonService
+     .doGet(apiUrl)
+     .pipe()
+     .subscribe((result) => {
+      this.filePath = this.sanitizer.bypassSecurityTrustResourceUrl(environment.baseUrl + '/' + result.Data)
+      window.open(environment.baseUrl + '/' + result.Data)
+     })
+
+  }
+
 }

@@ -10,8 +10,13 @@
     <tbody>
         <tr *ngFor="let file of FileList">
             <td>{{ file.TaskName }}</td>
-            <td>{{ file.FileName }}</td>
-            <td>Action</td>
+            <td>
+                <a class="text-primary" (click)="OnViewPdf(file.FileName)" style="cursor: pointer;">{{file.FileName}} </a>
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="onDownload(file.FileId)">Download</button>
+            </td>
+
         </tr>
     </tbody>
 </table>

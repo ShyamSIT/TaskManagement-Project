@@ -30,6 +30,7 @@ export class ApiUrlHelper {
             deleteTask : 'teacher/DeleteTask',
             uploadFile : 'teacher/UploadFile',
             getFileListByTeacherId : 'teacher/GetFileListByTeacherId',
+            viewPdf : 'teacher/ViewPdf',
         },
         roleRight : {
             getRoleRightsById : 'roleRight/GetRoleRightsById',
