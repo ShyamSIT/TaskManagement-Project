@@ -14,13 +14,13 @@
             <td>{{t.TaskName}}</td>
             <td>{{t.Deadline | date :'dd/MM/yyyy'}}</td>
             <td>
-                <ng-content *ngIf="t.Deadline <= todayDate">
+                <ng-content *ngIf="t.Deadline >= todayDate">
                     <ng-content *ngIf="t.IsCompleted"> <span>Submit Already</span></ng-content>
                     <ng-content *ngIf="!t.IsCompleted">
                         <button class="btn btn-sm btn-primary" (click)="submitAssignment(t)">Submit Assignment</button>
                     </ng-content>
                 </ng-content>
-                <ng-content *ngIf="t.Deadline > todayDate">
+                <ng-content *ngIf="t.Deadline < todayDate">
                     <span class="text-danger">Assignment deadline is over</span>
                 </ng-content>
             </td>
