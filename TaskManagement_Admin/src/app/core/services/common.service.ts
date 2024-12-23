@@ -78,6 +78,30 @@ export class CommonService {
     );
   }
 
+  downloadFile(apiUrl: string): any {
+    const httpOptions = {
+      headers: new HttpHeaders(),
+      responseType: 'blob' as 'json',
+    };
+    const loginData = JSON.parse(localStorage.getItem(StorageKey.loginData));
+    if (loginData) {
+      httpOptions.headers = httpOptions.headers.set(
+        'Authorization',
+        'Bearer ' + loginData.JWTToken,
+      );
+    }
+    const url = `${environment.apiUrl}${apiUrl}`;
+    return this.http.get(url, httpOptions).pipe(
+      tap(() => this.log(`downloadFile success`)),
+      catchError(
+        this.handleError(
+          `downloadFile url = ${JSON.stringify(apiUrl)}`,
+          new Blob(),
+        ),
+      ),
+    );
+  }
+
   goToLogin() {
     this.router.navigate(['/auth/login']);
   }

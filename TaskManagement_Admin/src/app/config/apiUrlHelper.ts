@@ -20,6 +20,7 @@ export class ApiUrlHelper {
             submitAssignment : 'user/SubmitAssignment',
             deleteUser  : 'user/DeleteUser',
             getFileListByUserId : 'user/GetFileListByUserId',
+            downloadPdf : 'user/DownloadPdf'
         },
         teacher : {
             addUpdateTask : 'teacher/AddUpdateTask',
