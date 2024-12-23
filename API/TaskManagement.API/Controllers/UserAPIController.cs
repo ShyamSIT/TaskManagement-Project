@@ -195,5 +195,48 @@ namespace TaskManagement.API.Controllers
             return response;
         }
         #endregion
+
+        #region GetFileListByUserId
+        [HttpGet("GetFileListByUserId")]
+        public async Task<ApiResponse<FileModel>> GetFileListByUserId(long UserId)
+        {
+            ApiResponse<FileModel> response = new() { Data = [] };
+
+            try
+            {
+                var files = await _userService.GetFileListByUserId(UserId);
+                response.Data = files;
+                response.Success = true;
+                response.Message = "Get File list";
+            }
+            catch (Exception ex)
+            {
+
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+        #endregion
+
+        #region DownloadPdf
+        [HttpGet("DownloadPdf")]
+        public async Task<IActionResult> DownloadPdf(string FileName)
+        {
+
+            // Path to the PDF file
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "UploadFiles", FileName);
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound("PDF file not found.");
+            }
+
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+
+            return File(fileBytes, "application/pdf",FileName); // File result with a filename for download
+        }
+        #endregion
     }
 }

@@ -29,6 +29,11 @@ namespace TaskManagement.Service.User
             return await _repository.GetFileByFileId(FileId);
         }
 
+        public async Task<List<FileModel>> GetFileListByUserId(long UserId)
+        {
+           return await _repository.GetFileListByUserId(UserId);
+        }
+
         public async Task<List<TaskModel>> GetTaskList()
         {
             return await _repository.GetTaskList();

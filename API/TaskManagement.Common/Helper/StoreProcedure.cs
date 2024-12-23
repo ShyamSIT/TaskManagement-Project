@@ -24,6 +24,7 @@ namespace TaskManagement.Common.Helper
         public const string SubmitAssignment = "TM_SP_SubmitAssignment";
         public const string DeleteUser = "TM_SP_DeleteUser";
         public const string GetFileByFileId = "TM_SP_GetFileByFileId";
+        public const string GetFileListByUserId = "TM_SP_GetFileListByUserId";
         #endregion
 
         #region teacher
@@ -35,7 +36,7 @@ namespace TaskManagement.Common.Helper
         public const string GetAssignmentListByTeacherId = "TM_SP_GetAssignmentListByTeacherId";
         public const string DeleteTask = "TM_SP_DeleteTask";
         public const string SaveFile = "TM_SP_SaveFile";
-        public const string GetFileListByTeacherId = "TM_SP_GetFileListByUserId";
+        public const string GetFileListByTeacherId = "TM_SP_GetFileListByTeacherId";
         #endregion
 
         #region RoleRight

@@ -17,5 +17,7 @@ namespace TaskManagement.Data.DBRepository.User
         Task<AssignmentModel> SubmitAssignment(AssignmentModel model);
         Task<long> DeleteUser(long UserId);
         Task<FileModel> GetFileByFileId(long FileId);
+        Task<List<FileModel>> GetFileListByUserId(long UserId);
+
     }
 }

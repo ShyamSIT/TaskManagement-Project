@@ -291,10 +291,21 @@ namespace TaskManagement.API.Controllers
         {
             var filePath = Path.Combine("UploadFiles",FileName);
             ApiPostResponse<string> response = new();
-            response.Data = filePath;
+            try
+            {
+                response.Success = true;
+                response.Data = filePath;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return response;
 
         }
         #endregion
+
+       
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zQ08XferC/lMuDhQyrY3vtZYt3LFkKC/sTey/lxeGKo=",
+  "Hash": "NrzVqEhfz7ulZI3JU2RR7Le7dKFaKgDnGejfF+aLgFs=",
   "Source": "TaskManagement.API",
   "BasePath": "_content/TaskManagement.API",
   "Mode": "Default",
@@ -34,6 +34,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UploadFiles\\Initial Agreement (10).pdf"
+    },
+    {
+      "Identity": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.API\\wwwroot\\UploadFiles\\Initial Agreement (12).pdf",
+      "SourceId": "TaskManagement.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.API\\wwwroot\\",
+      "BasePath": "_content/TaskManagement.API",
+      "RelativePath": "UploadFiles/Initial Agreement (12).pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadFiles\\Initial Agreement (12).pdf"
     },
     {
       "Identity": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.API\\wwwroot\\UploadFiles\\Initial Agreement (8).pdf",
