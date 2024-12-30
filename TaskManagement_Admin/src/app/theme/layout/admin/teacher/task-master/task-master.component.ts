@@ -81,7 +81,6 @@ export class TaskMasterComponent implements OnInit {
       .pipe()
       .subscribe((data) => {
         this.formSubmitted = false
-        console.log(data.Data);
       });
     
     this.modalRef.close();

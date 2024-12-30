@@ -30,7 +30,6 @@ export class UploadFileComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       this.TaskId = params['TaskId'];
-      console.log(this.TaskId);  //log the value of id
     })
 
     this.uploadForm = this.fb.group({ 

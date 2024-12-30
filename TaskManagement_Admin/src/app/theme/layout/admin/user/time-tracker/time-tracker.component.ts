@@ -117,7 +117,6 @@ export class TimeTrackerComponent implements OnInit {
         next: (data) => {
           if (data && data.Data) 
             this.timeLogs = data.Data;
-            console.log(this.timeLogs);
         }
       });
   }

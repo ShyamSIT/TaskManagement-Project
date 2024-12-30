@@ -69,7 +69,6 @@ export class StudentListComponent implements OnInit {
         next : (data) => {
           if(data && data.Success){
             this.getStudentList()
-            console.log(data.Data)
           }
         }
       })

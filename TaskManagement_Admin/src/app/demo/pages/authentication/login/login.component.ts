@@ -102,7 +102,6 @@ export default class LoginComponent implements OnInit {
             //   NotificationType.ERROR,
             // );
             this.toastr.error(data.Message)
-            console.log(data)
           }
         },
         error: (err) => {
