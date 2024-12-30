@@ -34,6 +34,12 @@ export class ApiUrlHelper {
             getFileListByTeacherId : 'teacher/GetFileListByTeacherId',
             viewPdf : 'teacher/ViewPdf',
         },
+        timeLog : {
+            addTimeLogTask : 'timeLog/AddTimeLogTask',
+            getTimeLogListByUserId : 'timeLog/GetTimeLogListByUserId',
+            getTimeLogListByParentId : 'timeLog/GetTimeLogListByParentId',
+            addUpdateTimeLogTiming : 'timeLog/AddUpdateTimeLogTiming',
+        },
         roleRight : {
             getRoleRightsById : 'roleRight/GetRoleRightsById',
         }

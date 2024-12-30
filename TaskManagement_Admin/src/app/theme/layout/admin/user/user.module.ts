@@ -7,6 +7,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 import { FileListComponent } from './file-list/file-list.component';
+import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -15,14 +17,16 @@ import { FileListComponent } from './file-list/file-list.component';
     UserListComponent,
     TaskListComponent,
     AssignmentListComponent,
-    FileListComponent
+    FileListComponent,
+    TimeTrackerComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DatePipe
+    DatePipe,
+    NgSelectModule
   ]
 })
 export class UserModule { }

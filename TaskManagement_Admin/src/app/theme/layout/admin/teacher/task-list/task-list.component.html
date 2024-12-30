@@ -3,14 +3,12 @@
         Add Task
     </button>
     <div class="m-2">
-        <ng-select [items]="priorities"
-        bindLabel="name"
-        placeholder="Priority"
-        (change)="OnChangeSelectPriority($event)">
-</ng-select>
+        <ng-select [items]="priorities" bindLabel="name" placeholder="Priority"
+            (change)="OnChangeSelectPriority($event)">
+        </ng-select>
     </div>
 </div>
-    
+
 
 <table class="table table-striped table-bordered">
     <thead class="table-primary">

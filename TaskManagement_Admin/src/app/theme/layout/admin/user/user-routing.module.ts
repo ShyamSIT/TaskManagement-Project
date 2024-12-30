@@ -5,6 +5,7 @@ import { canActivate } from 'src/app/guard/auth.guard';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 import { FileListComponent } from './file-list/file-list.component';
+import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path : 'file-list',
     component : FileListComponent,
+    canActivate : [canActivate]
+  },
+  {
+    path : 'time-tracker',
+    component : TimeTrackerComponent,
     canActivate : [canActivate]
   }
 ];

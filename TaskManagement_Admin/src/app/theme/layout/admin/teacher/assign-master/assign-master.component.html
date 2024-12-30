@@ -18,7 +18,6 @@
                     <option *ngFor="let student of users;let i = index" [value]="student.UserId"> {{ student.FirstName + " " +student.LastName }} </option>
                 </select> -->
                 <div>
-
                     <ng-select [items]="users" bindLabel="FullName" bindValue="UserId" [multiple]="true"
                         placeholder="Select student to assign task" formControlName="StudentId">
                     </ng-select>
