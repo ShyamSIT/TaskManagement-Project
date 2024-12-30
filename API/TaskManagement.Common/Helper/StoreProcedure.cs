@@ -43,6 +43,12 @@ namespace TaskManagement.Common.Helper
         public const string GetRoleRightsById = "TM_SP_GetRoleRightsById";
         #endregion
 
+        #region TimeLog
+        public const string AddTimeLogTask = "TM_SP_AddTimeLogTask";
+        public const string GetTimeLogListByUserId = "TM_SP_GetTimeLogListByUserId";
+        public const string AddUpdateTimeLogTiming = "TM_SP_AddUpdateTimeLogTiming";
+        #endregion
+
         #region ResetToken
         public const string AddResetPasswordToken = "TM_Sp_AddResetPasswordToken";
         public const string GetResetPasswordToken = "TM_SP_GetResetPasswordToken";

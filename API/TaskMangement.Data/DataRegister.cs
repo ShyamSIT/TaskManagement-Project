@@ -7,6 +7,7 @@ using TaskManagement.Data.DBRepository.Login;
 using TaskManagement.Data.DBRepository.ResetToken;
 using TaskManagement.Data.DBRepository.RoleRightMaster;
 using TaskManagement.Data.DBRepository.Teacher;
+using TaskManagement.Data.DBRepository.TimeLog;
 using TaskManagement.Data.DBRepository.User;
 
 namespace TaskManagement.Data
@@ -22,6 +23,7 @@ namespace TaskManagement.Data
                 { typeof(ITeacherRepository), typeof(TeacherRepository) },
                 { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) },
                 { typeof(ITokenRepository), typeof(TokenRepository) },
+                { typeof(ITimeLogRepository), typeof(TimeLogRepository) }
             };
             return dataDictionary;
         }

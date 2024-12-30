@@ -8,6 +8,7 @@ using TaskManagement.Service.Login;
 using TaskManagement.Service.ResetToken;
 using TaskManagement.Service.RoleRightMaster;
 using TaskManagement.Service.Teacher;
+using TaskManagement.Service.TimeLog;
 using TaskManagement.Service.User;
 
 namespace TaskManagement.Service
@@ -22,7 +23,8 @@ namespace TaskManagement.Service
                 { typeof(IUserService), typeof(UserService) },
                 { typeof(ITeacherService), typeof(TeacherService) },
                 { typeof(IRoleRightsService), typeof(RoleRightsService) },
-                { typeof(ITokenService),typeof(TokenService) }
+                { typeof(ITokenService),typeof(TokenService) },
+                { typeof(ITimeLogService),typeof(TimeLogService) }
             };
             return dataDictionary;
         }
