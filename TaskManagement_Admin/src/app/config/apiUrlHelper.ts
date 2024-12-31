@@ -39,6 +39,7 @@ export class ApiUrlHelper {
             getTimeLogListByUserId : 'timeLog/GetTimeLogListByUserId',
             getTimeLogListByParentId : 'timeLog/GetTimeLogListByParentId',
             addUpdateTimeLogTiming : 'timeLog/AddUpdateTimeLogTiming',
+            deleteTimeLogIdById : 'timeLog/DeleteTimeLogIdById'
         },
         roleRight : {
             getRoleRightsById : 'roleRight/GetRoleRightsById',

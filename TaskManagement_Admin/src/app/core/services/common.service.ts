@@ -56,7 +56,6 @@ export class CommonService {
   }
 
   doPost(apiUrl: string, postData: any): Observable<ApiResponse> { 
-    
     const httpOptions = {
       headers: new HttpHeaders()
     };

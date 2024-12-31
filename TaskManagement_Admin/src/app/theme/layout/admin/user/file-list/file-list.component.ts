@@ -47,7 +47,6 @@ export class FileListComponent implements OnInit {
   }
 
   OnDownload(FileName: any): void {
-    debugger;
     // const apiUrl = this.apiUrl.apiUrl.user.downloadPdf + '?FileName=' + FileName;
     // this.commonService.
     //   downloadFile(apiUrl)

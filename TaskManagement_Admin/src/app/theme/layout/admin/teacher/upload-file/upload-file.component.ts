@@ -49,7 +49,6 @@ export class UploadFileComponent implements OnInit {
       this.toastr.warning("Please select a file")
       return 
     }
-    debugger
     const apiUrl = this.apiUrl.apiUrl.teacher.uploadFile
     const objData = {
       TaskId : this.TaskId,

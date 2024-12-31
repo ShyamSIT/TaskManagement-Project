@@ -142,8 +142,9 @@ export class TimeTrackerComponent implements OnInit {
     if (this.expandedRowId === timeLogId) {
       this.expandedRowId = null; // Collapse the row if it's already expanded
     } else {
-      this.expandedRowId = timeLogId;
-      this.getChildData(timeLogId)
+      this.expandedRowId = timeLogId
+      this.timeLogByParentId = this.timeLogs.filter(t => t.ParentId === timeLogId || t.TimeLogId === timeLogId)
+      // this.getChildData(timeLogId)
     }
   }
 
@@ -219,7 +220,7 @@ export class TimeTrackerComponent implements OnInit {
 
   onStop(timelog: any) {
     //set the which timelog is stopped
-    debugger
+    
     this.isStartedBtn = false;
 
     if (timelog != null) {
@@ -261,6 +262,26 @@ export class TimeTrackerComponent implements OnInit {
             this.timeTrackerForm.reset();
           } else {
             this.toastr.error('Failed to Log Time');
+          }
+        }
+      });
+  }
+
+  DeleteTimeLog(timeLogId : any) : void {
+    
+    const apiUrl = this.apiUrl.apiUrl.timeLog.deleteTimeLogIdById;
+    const objData = {
+      TimeLogId: timeLogId
+    };
+    this.commonService
+     .doPost(apiUrl, objData)
+     .pipe()
+     .subscribe({
+        next: (data) => {
+          if (data) {
+            this.getTimeLoglist();
+          } else {
+            this.toastr.error('Failed to Delete Time Log');
           }
         }
       });
