@@ -61,18 +61,7 @@ namespace TaskManagement.API.Controllers
             try
             {
                 List<TimeLogModel> timeLogList = await _timeLogService.GetTimeLogListByUserId(UserId);
-                List<TimeLogModel> timeLogs = new List<TimeLogModel>();
-                timeLogList.ForEach(time =>
-                {
-                    if(time.ParentId == null)
-                    {
-                        timeLogs.Add(time);
-                    }
-
-                });
-
-                timeLogs = timeLogs.OrderByDescending(time => time.TimeLogId).ToList();
-                response.Data = timeLogs;
+                response.Data = timeLogList.OrderByDescending(m => m.TimeLogId).ToList();
                 response.Success = true;
             }
             catch (Exception)
@@ -85,33 +74,62 @@ namespace TaskManagement.API.Controllers
         }
         #endregion
 
-        #region GetTimeLogListByParentId 
-        [HttpPost("GetTimeLogListByParentId")]
-        public async Task<ApiResponse<TimeLogModel>> GetTimeLogListByParentId(TimeLogModel model)
+        //#region GetTimeLogListByParentId 
+        //[HttpPost("GetTimeLogListByParentId")]
+        //public async Task<ApiResponse<TimeLogModel>> GetTimeLogListByParentId(TimeLogModel model)
+        //{
+        //    ApiResponse<TimeLogModel> response = new() { Data = [] };
+        //    try
+        //    {
+        //        List<TimeLogModel> timeLogList = await _timeLogService.GetTimeLogListByUserId(model.UserId);
+        //        List<TimeLogModel> timeLogs = timeLogList.Where(time => time.ParentId == model.TimeLogId).ToList();
+        //        TimeLogModel? parentTimeLog = timeLogList.Where(time => time.TimeLogId == model.TimeLogId).FirstOrDefault();
+        //        if (parentTimeLog != null)
+        //        {
+        //            timeLogs.Add(parentTimeLog); // Add the parent time log to the list
+        //        }
+
+        //        timeLogs = timeLogs.OrderByDescending(time => time.TimeLogId).ToList();
+        //        response.Data = timeLogs;
+        //        response.Success = true;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //    return response;
+        //}
+        //#endregion
+
+        #region DeleteTimeLogIdById
+        [HttpPost("DeleteTimeLogIdById")]
+        public async Task<ApiPostResponse<string>> DeleteTimeLogIdById(TimeLogModel model)
         {
-            ApiResponse<TimeLogModel> response = new() { Data = [] };
+            ApiPostResponse<string> response = new();
             try
             {
-                List<TimeLogModel> timeLogList = await _timeLogService.GetTimeLogListByUserId(model.UserId);
-                List<TimeLogModel> timeLogs = timeLogList.Where(time => time.ParentId == model.TimeLogId).ToList();
-                TimeLogModel? parentTimeLog = timeLogList.Where(time => time.TimeLogId == model.TimeLogId).FirstOrDefault();
-                if (parentTimeLog != null)
+                var result = await _timeLogService.DeleteTimeLogIdById(model.TimeLogId);
+                if(result > 0)
                 {
-                    timeLogs.Add(parentTimeLog); // Add the parent time log to the list
+                    response.Success = true;
+                    response.Data = "Deleted";
                 }
-
-                timeLogs = timeLogs.OrderByDescending(time => time.TimeLogId).ToList();
-                response.Data = timeLogs;
-                response.Success = true;
+                else
+                {
+                    response.Success = false;
+                    response.Data = "Error occur";
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                response.Success = false;
+                response.Message = ex.Message;
             }
 
             return response;
-        }
+        } 
         #endregion
 
     }

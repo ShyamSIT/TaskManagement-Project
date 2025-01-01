@@ -16,7 +16,7 @@ namespace TaskManagement.Data.DBRepository.TimeLog
         public async Task<TimeLogModel> AddTimeLogTask(TimeLogModel model)
         {
 
-                if (model.StartTime != null)
+            if (model.StartTime != null)
             {
                 model.StartTime = DateTime.Now;
                 model.EndTime = DateTime.Now;
@@ -37,6 +37,15 @@ namespace TaskManagement.Data.DBRepository.TimeLog
 
             return await QueryFirstOrDefaultAsync<TimeLogModel>(StoreProcedure.AddTimeLogTask, param);
         }
+
+        public async Task<int> DeleteTimeLogIdById(long TimeLogId)
+        {
+            var param = new DynamicParameters();
+            param.Add("@TimeLogId", TimeLogId);
+
+            return await QueryFirstOrDefaultAsync<int>(StoreProcedure.DeleteTimeLogIdById, param);
+        }
+
         public async Task<List<TimeLogModel>> GetTimeLogListByUserId(long UserId)
         {
             var param = new DynamicParameters();

@@ -17,6 +17,12 @@ namespace TaskManagement.Service.TimeLog
         {
             return await _repository.AddTimeLogTask(model);
         }
+
+        public async Task<int> DeleteTimeLogIdById(long TimeLogId)
+        {
+            return await _repository.DeleteTimeLogIdById(TimeLogId);
+        }
+
         public async Task<List<TimeLogModel>> GetTimeLogListByUserId(long UserId)
         {
             return await _repository.GetTimeLogListByUserId(UserId);

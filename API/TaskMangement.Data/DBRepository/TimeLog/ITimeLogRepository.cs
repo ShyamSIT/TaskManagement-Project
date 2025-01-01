@@ -11,5 +11,6 @@ namespace TaskManagement.Data.DBRepository.TimeLog
     {
         Task<TimeLogModel> AddTimeLogTask(TimeLogModel model);
         Task<List<TimeLogModel>> GetTimeLogListByUserId(long UserId);
+        Task<int> DeleteTimeLogIdById(long TimeLogId);
     }
 }
