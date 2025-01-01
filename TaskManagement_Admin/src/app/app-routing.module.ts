@@ -43,27 +43,24 @@ const routes: Routes = [
   // }
 
   {
-    path  : '',
-    redirectTo : 'auth',
-    pathMatch : 'full'
+    path: '',
+    redirectTo: 'auth',
+    pathMatch: 'full'
   },
   {
-    path: 'auth', 
-    loadChildren: () =>
-      import('../app/demo/pages/authentication/authentication.module').then(
-        (m) => m.AuthenticationModule,
-      ),
+    path: 'auth',
+    loadChildren: () => import('../app/demo/pages/authentication/authentication.module').then((m) => m.AuthenticationModule)
   },
   {
-      path: '',
-      component: AdminComponent,
-      children: [
-        {
-          path: '',
-          loadChildren: () => import('../app/theme/layout/admin/admin.module').then((m) => m.AdminModule)
-        }
-      ]
-    }
+    path: '',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('../app/theme/layout/admin/admin.module').then((m) => m.AdminModule)
+      }
+    ]
+  }
 ];
 
 @NgModule({

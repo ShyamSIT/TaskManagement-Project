@@ -37,7 +37,6 @@ export class ApiUrlHelper {
         timeLog : {
             addTimeLogTask : 'timeLog/AddTimeLogTask',
             getTimeLogListByUserId : 'timeLog/GetTimeLogListByUserId',
-            getTimeLogListByParentId : 'timeLog/GetTimeLogListByParentId',
             addUpdateTimeLogTiming : 'timeLog/AddUpdateTimeLogTiming',
             deleteTimeLogIdById : 'timeLog/DeleteTimeLogIdById'
         },

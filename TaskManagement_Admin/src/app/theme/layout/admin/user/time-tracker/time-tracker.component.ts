@@ -18,7 +18,7 @@ export class TimeTrackerComponent implements OnInit {
   timeLogs: TimeLogModel[] = [];
   timeLogByParentId: TimeLogModel[] = [];
   expandedRowId: number | null = null;
-  timeTrackerId :any;
+  timeTrackerId: any;
   timeTrackerForm: FormGroup = this.fb.group({});
   elapsedTime: Date;
   intervalId: any;
@@ -61,15 +61,46 @@ export class TimeTrackerComponent implements OnInit {
     });
   }
 
+  calculateTotalTimeById = (timeLogId) => {
+    const logs = this.timeLogs.filter((t) => t.ParentId === timeLogId || t.TimeLogId === timeLogId);
+
+    let diffInMs = 0;
+    logs.forEach((log) => {
+      let start = new Date(log.StartTime); // Convert start time to milliseconds
+      let end = new Date(log.EndTime);
+
+      // Zero out milliseconds
+      start.setMilliseconds(0);
+      end.setMilliseconds(0);
+
+      diffInMs += end.getTime() - start.getTime();
+
+      //diffInMs += end - start
+    });
+
+    if (diffInMs < 0) {
+      return '00:00:00'; // Invalid range, return default
+    }
+    const totalSeconds = Math.floor(diffInMs / 1000); // Convert to total seconds
+    const hours = Math.floor(totalSeconds / 3600); // Get total hours
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60; // Get remaining seconds
+
+    // Format time as HH:mm:ss
+    return `${this.padZero(hours)}:${this.padZero(minutes)}:${this.padZero(seconds)}`;
+  };
+
   calculateTotalTime(startTime: any, endTime: any): string {
     if (!startTime || !endTime) {
       return '00:00:00'; // Default value when times are missing
     }
 
-    const start = new Date(startTime).getTime(); // Convert start time to milliseconds
-    const end = new Date(endTime).getTime(); // Convert end time to milliseconds
+    const start = new Date(startTime) // Convert start time to milliseconds
+    const end = new Date(endTime) // Convert end time to milliseconds
+      start.setMilliseconds(0);
+      end.setMilliseconds(0);
 
-    const diffInMs = end - start; // Difference in milliseconds
+    const diffInMs = end.getTime() - start.getTime(); // Difference in milliseconds
 
     if (diffInMs < 0) {
       return '00:00:00'; // Invalid range, return default
@@ -84,6 +115,11 @@ export class TimeTrackerComponent implements OnInit {
     return `${this.padZero(hours)}:${this.padZero(minutes)}:${this.padZero(seconds)}`;
   }
 
+  getEndTimeOfParent(timeLogId){
+    const logs = this.timeLogs.filter((t) => t.ParentId === timeLogId || t.TimeLogId === timeLogId);
+    let endTime = logs[0].EndTime
+    return endTime
+  }
   padZero(value: number): string {
     return value < 10 ? `0${value}` : value.toString();
   }
@@ -115,36 +151,16 @@ export class TimeTrackerComponent implements OnInit {
       .pipe()
       .subscribe({
         next: (data) => {
-          if (data && data.Data) 
-            this.timeLogs = data.Data;
+          if (data && data.Data) this.timeLogs = data.Data;
         }
       });
-  }
-  getChildData(timeLogId){
-    const UserId = this.storageService.getValue('UserId');
-      const apiUrl = this.apiUrl.apiUrl.timeLog.getTimeLogListByParentId;
-      const objData = {
-        TimeLogId: timeLogId,
-        UserId: UserId
-      };
-      this.commonService
-        .doPost(apiUrl, objData)
-        .pipe()
-        .subscribe({
-          next: (data) => {
-            if (data && data.Data) {
-              this.timeLogByParentId = data.Data;
-            }
-          }
-        });
   }
   onChildData(timeLogId) {
     if (this.expandedRowId === timeLogId) {
       this.expandedRowId = null; // Collapse the row if it's already expanded
     } else {
-      this.expandedRowId = timeLogId
-      this.timeLogByParentId = this.timeLogs.filter(t => t.ParentId === timeLogId || t.TimeLogId === timeLogId)
-      // this.getChildData(timeLogId)
+      this.expandedRowId = timeLogId;
+      this.timeLogByParentId = this.timeLogs.filter((t) => t.ParentId === timeLogId || t.TimeLogId === timeLogId);
     }
   }
 
@@ -155,7 +171,7 @@ export class TimeTrackerComponent implements OnInit {
   onStart(timelog: any) {
     if (this.currentStartedTimeLog && this.currentStartedTimeLog.TimeLogId !== timelog.TimeLogId) {
       this.onStop(this.currentStartedTimeLog);
-    } 
+    }
 
     //set the which timelog is started
     this.isStartedBtn = true;
@@ -168,7 +184,7 @@ export class TimeTrackerComponent implements OnInit {
 
     this.currentTask.StartTime = new Date();
     if (timelog != null) {
-      this.timeTrackerId =timelog.TimeLogId;
+      this.timeTrackerId = timelog.TimeLogId;
       // this.currentTask.TimeLogId = timelog.TimeLogId
       this.isStartedMap[timelog.TimeLogId] = true;
       this.currentStartedTimeLog = timelog;
@@ -210,7 +226,7 @@ export class TimeTrackerComponent implements OnInit {
           if (data && data.Success) {
             // this.getTimeLoglist();
             this.currentTask.TimeLogId = data.Data.TimeLogId;
-            this.TaskId = null
+            this.TaskId = null;
           } else {
             this.toastr.error('Failed to Log Time');
           }
@@ -220,14 +236,14 @@ export class TimeTrackerComponent implements OnInit {
 
   onStop(timelog: any) {
     //set the which timelog is stopped
-    
+
     this.isStartedBtn = false;
 
     if (timelog != null) {
       this.isStartedMap[timelog.TimeLogId] = false;
-    }else{
-      this.isStartedMap[this.currentTask.TimeLogId] = false
-      this.isStartedMap[this.timeTrackerId] = false
+    } else {
+      this.isStartedMap[this.currentTask.TimeLogId] = false;
+      this.isStartedMap[this.timeTrackerId] = false;
     }
     this.currentStartedTimeLog = null;
 
@@ -238,7 +254,7 @@ export class TimeTrackerComponent implements OnInit {
     const apiurl = this.apiUrl.apiUrl.timeLog.addTimeLogTask;
     const objData = {
       TimeLogId: this.currentTask.TimeLogId,
-      TaskId : this.TaskId,
+      TaskId: this.TaskId,
       EndTime: this.currentTask.EndTime
     };
     this.commonService
@@ -247,7 +263,7 @@ export class TimeTrackerComponent implements OnInit {
       .subscribe({
         next: (data) => {
           if (data && data.Success) {
-            this.getTimeLoglist()
+            this.getTimeLoglist();
             this.currentTask = {
               TimeLogId: 0,
               TimeLogText: '',
@@ -256,9 +272,9 @@ export class TimeTrackerComponent implements OnInit {
               StartTime: null,
               EndTime: null,
               TaskName: null,
-              ParentId: 0,
+              ParentId: 0
             };
-            this.timeTrackerId = 0
+            this.timeTrackerId = 0;
             this.timeTrackerForm.reset();
           } else {
             this.toastr.error('Failed to Log Time');
@@ -267,16 +283,15 @@ export class TimeTrackerComponent implements OnInit {
       });
   }
 
-  DeleteTimeLog(timeLogId : any) : void {
-    
+  DeleteTimeLog(timeLogId: any): void {
     const apiUrl = this.apiUrl.apiUrl.timeLog.deleteTimeLogIdById;
     const objData = {
       TimeLogId: timeLogId
     };
     this.commonService
-     .doPost(apiUrl, objData)
-     .pipe()
-     .subscribe({
+      .doPost(apiUrl, objData)
+      .pipe()
+      .subscribe({
         next: (data) => {
           if (data) {
             this.getTimeLoglist();
