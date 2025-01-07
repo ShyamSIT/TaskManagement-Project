@@ -44,7 +44,7 @@ builder.Services.AddAuthentication(x =>
         ValidateAudience = false
     };
 });
-
+builder.Services.AddHttpClient();
 builder.Services.RegisterServices();
 builder.Services.AddSingleton<JwtMiddleware>();
 builder.Services.AddEndpointsApiExplorer();

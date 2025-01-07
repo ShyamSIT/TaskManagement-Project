@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System.Reflection;
 using TaskManagement.Common;
 using TaskManagement.Model;
 using TaskManagement.Model.Model;
 using TaskManagement.Service.User;
-
 namespace TaskManagement.API.Controllers
 {
     [Route("api/user")]
@@ -235,7 +232,7 @@ namespace TaskManagement.API.Controllers
 
             var fileBytes = System.IO.File.ReadAllBytes(filePath);
 
-            return File(fileBytes, "application/pdf",FileName); // File result with a filename for download
+            return File(fileBytes, "application/pdf", FileName); // File result with a filename for download
         }
         #endregion
     }
