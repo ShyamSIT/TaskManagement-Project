@@ -95,10 +95,10 @@ export class TimeTrackerComponent implements OnInit {
       return '00:00:00'; // Default value when times are missing
     }
 
-    const start = new Date(startTime) // Convert start time to milliseconds
-    const end = new Date(endTime) // Convert end time to milliseconds
-      start.setMilliseconds(0);
-      end.setMilliseconds(0);
+    const start = new Date(startTime); // Convert start time to milliseconds
+    const end = new Date(endTime); // Convert end time to milliseconds
+    start.setMilliseconds(0);
+    end.setMilliseconds(0);
 
     const diffInMs = end.getTime() - start.getTime(); // Difference in milliseconds
 
@@ -115,10 +115,10 @@ export class TimeTrackerComponent implements OnInit {
     return `${this.padZero(hours)}:${this.padZero(minutes)}:${this.padZero(seconds)}`;
   }
 
-  getEndTimeOfParent(timeLogId){
+  getEndTimeOfParent(timeLogId) {
     const logs = this.timeLogs.filter((t) => t.ParentId === timeLogId || t.TimeLogId === timeLogId);
-    let endTime = logs[0].EndTime
-    return endTime
+    let endTime = logs[0].EndTime;
+    return endTime;
   }
   padZero(value: number): string {
     return value < 10 ? `0${value}` : value.toString();

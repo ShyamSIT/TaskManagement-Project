@@ -1,0 +1,38 @@
+<!-- <div class="ocr-container">
+  <h2>Image to Text (OCR)</h2>
+
+  <input type="file" accept="image/*" (change)="onFileChange($event)" />
+  <button [disabled]="!imageFile || isProcessing" (click)="processImage()">Extract Text</button>
+
+  <div *ngIf="isProcessing">
+    <p>Processing... {{ progress }}%</p>
+  </div>
+
+  <div *ngIf="extractedText">
+    <h3>Extracted Text:</h3>
+    <textarea cols="50" rows="5">{{extractedText}}</textarea>
+  </div>
+</div> -->
+<!-- <div class="chatbot-layout">
+  <div class="main-content">
+    <header class="topbar">
+      <h1>Chatbot</h1>
+    </header>
+    <div class="chat-area">
+      <div class="chat-window">
+        <div *ngFor="let message of chatMessages" class="message"
+          [ngClass]="{ 'bot-message': message.sender === 'Bot', 'user-message': message.sender === 'User', 'collapsed': message.sender === 'Bot' && message.text.length > 300, 
+            'expanded': message.sender === 'Bot' && message.expanded }" >
+            <strong>{{message.sender }}:</strong> 
+            <span [innerHTML]="sanitizeHTML(message.text)"></span>
+        </div>
+      </div>
+      <div class="chat-input">
+        <textarea class="w-100" rows="3" [(ngModel)]="userInput" placeholder="Type your message..." (keydown.enter)="sendMessage()" ></textarea>
+      </div>
+      <div class="mt-2">
+      <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+      </div>  
+    </div>
+  </div>
+</div> -->

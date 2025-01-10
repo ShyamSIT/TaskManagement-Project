@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from 'src/app/demo/default/default.component';
+import { OcrImageComponent } from './ocr-image/ocr-image.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path : "teacher",
     loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule),
+  },
+  {
+    path : 'ocr-image',
+    component : OcrImageComponent
   }
 ];
 
