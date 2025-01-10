@@ -54,6 +54,31 @@ export class TimeTrackerComponent implements OnInit {
     this.initialTimeForm();
   }
 
+  onAfterSelectChange(event : any,TimeLogId ){
+    console.log(event, " bwkebfiwebf" ,TimeLogId);
+
+    const apiurl = this.apiUrl.apiUrl.timeLog.onChangeSelectTaskId
+    const objData = {
+      TimeLogId: TimeLogId,
+      TaskId : event.TaskId 
+    }
+
+    this.commonService
+     .doPost(apiurl,objData)
+     .pipe()
+     .subscribe({
+        next :(data) => {
+          if(data && data.Data){
+            console.log(data.Data)
+          }
+        },
+
+        error : (err) => {  
+          console.error('Error in timeLog onChangeSelectTaskId', err);
+        }
+      })
+  }
+
   initialTimeForm() {
     this.timeTrackerForm = this.fb.group({
       timeLogText: [''],

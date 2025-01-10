@@ -38,7 +38,8 @@ export class ApiUrlHelper {
             addTimeLogTask : 'timeLog/AddTimeLogTask',
             getTimeLogListByUserId : 'timeLog/GetTimeLogListByUserId',
             addUpdateTimeLogTiming : 'timeLog/AddUpdateTimeLogTiming',
-            deleteTimeLogIdById : 'timeLog/DeleteTimeLogIdById'
+            deleteTimeLogIdById : 'timeLog/DeleteTimeLogIdById',
+            onChangeSelectTaskId : 'timeLog/OnChangeSelectTaskId',
         },
         roleRight : {
             getRoleRightsById : 'roleRight/GetRoleRightsById',
