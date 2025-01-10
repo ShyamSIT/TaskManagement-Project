@@ -6,5 +6,5 @@ export class AssignmentModel {
     UserName: string;
     IsCompleted: boolean;
     AssignDate: Date;
-    Deadline : any;
+    Deadline : Date;
 }
