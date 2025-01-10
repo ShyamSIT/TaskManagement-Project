@@ -129,7 +129,36 @@ namespace TaskManagement.API.Controllers
             }
 
             return response;
-        } 
+        }
+        #endregion
+
+        #region OnChangeSelectTaskId
+        [HttpPost("OnChangeSelectTaskId")]
+        public async Task<ApiPostResponse<string>> OnChangeSelectTaskId(TimeLogModel model)
+        {
+            ApiPostResponse<string> response = new();
+            try
+            {
+                var result = await _timeLogService.OnChangeSelectTaskId(model);
+                if (result > 0)
+                {
+                    response.Success = true;
+                    response.Data = "Changed select task Id";
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Data = "Error occur";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
         #endregion
 
     }

@@ -27,5 +27,10 @@ namespace TaskManagement.Service.TimeLog
         {
             return await _repository.GetTimeLogListByUserId(UserId);
         }
+
+        public async Task<int> OnChangeSelectTaskId(TimeLogModel timeLog)
+        {
+            return await _repository.OnChangeSelectTaskId(timeLog);
+        }
     }
 }

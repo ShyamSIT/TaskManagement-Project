@@ -48,6 +48,7 @@ namespace TaskManagement.Common.Helper
         public const string GetTimeLogListByUserId = "TM_SP_GetTimeLogListByUserId";
         public const string AddUpdateTimeLogTiming = "TM_SP_AddUpdateTimeLogTiming";
         public const string DeleteTimeLogIdById = "TM_SP_DeleteTimeLogIdById";
+        public const string OnChangeSelectTaskId = "TM_SP_OnChangeSelectTaskId";
         #endregion
 
         #region ResetToken

@@ -53,6 +53,16 @@ namespace TaskManagement.Data.DBRepository.TimeLog
 
             var data = await QueryAsync<TimeLogModel>(StoreProcedure.GetTimeLogListByUserId, param);
             return data.ToList();
-        } 
+        }
+
+        public async Task<int> OnChangeSelectTaskId(TimeLogModel timeLog)
+        {
+            var param = new DynamicParameters();
+            param.Add("@TimeLogId", timeLog.TimeLogId);
+            param.Add("@TaskId", timeLog.TaskId);
+
+
+            return await QueryFirstOrDefaultAsync<int>(StoreProcedure.OnChangeSelectTaskId, param);
+        }
     }
  }
