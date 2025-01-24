@@ -60,7 +60,7 @@ export class TimeTrackerComponent implements OnInit {
     const apiurl = this.apiUrl.apiUrl.timeLog.onChangeSelectTaskId
     const objData = {
       TimeLogId: TimeLogId,
-      TaskId : event.TaskId 
+      TaskId : event.TaskId || 0
     }
 
     this.commonService
@@ -70,6 +70,7 @@ export class TimeTrackerComponent implements OnInit {
         next :(data) => {
           if(data && data.Data){
             console.log(data.Data)
+            this.getTimeLoglist()
           }
         },
 
@@ -99,8 +100,6 @@ export class TimeTrackerComponent implements OnInit {
       end.setMilliseconds(0);
 
       diffInMs += end.getTime() - start.getTime();
-
-      //diffInMs += end - start
     });
 
     if (diffInMs < 0) {
@@ -319,6 +318,7 @@ export class TimeTrackerComponent implements OnInit {
       .subscribe({
         next: (data) => {
           if (data) {
+            debugger
             this.getTimeLoglist();
           } else {
             this.toastr.error('Failed to Delete Time Log');
