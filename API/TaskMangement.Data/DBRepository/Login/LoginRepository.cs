@@ -24,12 +24,12 @@ namespace TaskManagement.Data.DBRepository.Login
             return await QueryFirstOrDefaultAsync<int>(StoreProcedure.DeleteResetPasswordToken,param,commandType: CommandType.StoredProcedure);
         }
 
-        public async Task<UserDetailModel> GetUserByEmail(string Email)
+        public async Task<UserModel> GetUserByEmail(string Email)
         {
             var param = new DynamicParameters();
             param.Add("@Email", Email);
             
-            return await QueryFirstOrDefaultAsync<UserDetailModel>(StoreProcedure.GetUserByEmail, param,commandType : CommandType.StoredProcedure);
+            return await QueryFirstOrDefaultAsync<UserModel>(StoreProcedure.GetUserByEmail, param,commandType : CommandType.StoredProcedure);
         }
 
         public async Task<LoginModel> LoginUser(LoginModel loginModel)

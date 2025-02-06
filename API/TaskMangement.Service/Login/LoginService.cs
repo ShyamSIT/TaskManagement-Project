@@ -21,7 +21,7 @@ namespace TaskManagement.Service.Login
         {
            return await _repository.LoginUser(loginModel);
         }
-        public async Task<UserDetailModel> GetUserByEmail(string Email)
+        public async Task<UserModel> GetUserByEmail(string Email)
         {
             return await _repository.GetUserByEmail(Email);
         }

@@ -20,6 +20,7 @@ namespace TaskManagement.Common.Helper
         public const string SaveUser = "TM_SP_AddUpdateUser";
         public const string GetUserByUserId = "TM_SP_GetUserByUserId";
         public const string GetUserList = "TM_SP_GetUserList";
+        public const string GetAllUsers = "TM_SP_GetAllUsers";
         public const string GetAssignmentList = "TM_SP_GetAssignmentList";
         public const string SubmitAssignment = "TM_SP_SubmitAssignment";
         public const string DeleteUser = "TM_SP_DeleteUser";
@@ -54,7 +55,19 @@ namespace TaskManagement.Common.Helper
         #region ResetToken
         public const string AddResetPasswordToken = "TM_Sp_AddResetPasswordToken";
         public const string GetResetPasswordToken = "TM_SP_GetResetPasswordToken";
+
         #endregion
 
+        #region Notification
+        public const string GetAllNotificationByUserId = "TM_SP_GetAllNotificationByUserId";
+        public const string NotifyNewTask = "TM_SP_NotifyNewTask";
+        #endregion
+
+        #region Chat
+        public const string ChatSaveMessage = "TM_SP_ChatSaveMessage";
+        public const string ChatAddUpdateConnection = "TM_SP_ChatAddUpdateConnection";
+        public const string GetAllChatMessages = "TM_SP_GetAllChatMessages";
+        public const string GetConnectionId = "TM_SP_GetConnectionId";
+        #endregion
     }
 }

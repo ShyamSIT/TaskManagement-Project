@@ -22,5 +22,6 @@ namespace TaskManagement.API
         //    services.AddSingleton<ILoggerManager, LoggerManager>();
         //}
 
+
     }
 }

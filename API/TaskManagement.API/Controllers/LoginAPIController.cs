@@ -77,7 +77,7 @@ namespace TaskManagement.API.Controllers
                 {
                     Email = model.Email,
                 };
-                UserDetailModel user = await _loginService.GetUserByEmail(AuthModel?.Email);
+                UserModel user = await _loginService.GetUserByEmail(AuthModel?.Email);
                 if (user != null && user.UserId > 0)
                 {
                     //generate the token 

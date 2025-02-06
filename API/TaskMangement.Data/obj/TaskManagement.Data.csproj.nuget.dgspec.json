@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj": {}
+    "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj": {}
   },
   "projects": {
-    "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj": {
+    "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj",
+        "projectUniqueName": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj",
         "projectName": "TaskManagement.Common",
-        "projectPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj",
+        "projectPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj",
         "packagesPath": "C:\\Users\\sit463\\.nuget\\packages\\",
-        "outputPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\obj\\",
+        "outputPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sit463\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -73,14 +73,14 @@
         }
       }
     },
-    "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj": {
+    "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj",
+        "projectUniqueName": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj",
         "projectName": "TaskManagement.Model",
-        "projectPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj",
+        "projectPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj",
         "packagesPath": "C:\\Users\\sit463\\.nuget\\packages\\",
-        "outputPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\obj\\",
+        "outputPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sit463\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -134,14 +134,14 @@
         }
       }
     },
-    "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj": {
+    "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj",
+        "projectUniqueName": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj",
         "projectName": "TaskManagement.Data",
-        "projectPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj",
+        "projectPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\TaskManagement.Data.csproj",
         "packagesPath": "C:\\Users\\sit463\\.nuget\\packages\\",
-        "outputPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\obj\\",
+        "outputPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskMangement.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sit463\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -158,11 +158,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj": {
-                "projectPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj"
+              "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj": {
+                "projectPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj"
               },
-              "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj": {
-                "projectPath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj"
+              "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj": {
+                "projectPath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManegement.Model\\TaskManagement.Model.csproj"
               }
             }
           }
@@ -180,6 +180,10 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.1.35, )"
+            },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",

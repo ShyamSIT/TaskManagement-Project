@@ -27,7 +27,7 @@ namespace TaskManagement.Service.Teacher
             return await _repository.DeleteTask(TaskId);
         }
 
-        public async Task<List<UserDetailModel>> GetAllUsersByNotAssignTask(long TaskId)
+        public async Task<List<UserModel>> GetAllUsersByNotAssignTask(long TaskId)
         {
             return await _repository.GetAllUsersByNotAssignTask(TaskId);
         }

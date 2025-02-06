@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Data.DBRepository.ResetToken;
+using TaskManagement.Service.Chat;
 using TaskManagement.Service.Login;
+using TaskManagement.Service.Notification;
 using TaskManagement.Service.ResetToken;
 using TaskManagement.Service.RoleRightMaster;
 using TaskManagement.Service.Teacher;
@@ -24,7 +26,9 @@ namespace TaskManagement.Service
                 { typeof(ITeacherService), typeof(TeacherService) },
                 { typeof(IRoleRightsService), typeof(RoleRightsService) },
                 { typeof(ITokenService),typeof(TokenService) },
-                { typeof(ITimeLogService),typeof(TimeLogService) }
+                { typeof(ITimeLogService),typeof(TimeLogService) },
+                { typeof(INotificationService),typeof(NotificationService) },
+                { typeof(IChatService),typeof(ChatService) }
             };
             return dataDictionary;
         }

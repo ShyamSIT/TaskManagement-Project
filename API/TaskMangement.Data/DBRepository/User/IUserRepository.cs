@@ -9,9 +9,10 @@ namespace TaskManagement.Data.DBRepository.User
 {
     public interface IUserRepository
     {
-        Task<UserDetailModel> SaveUser(UserDetailModel userDetailModel);
-        Task<UserDetailModel> GetUserByUserId(long UserId);
-        Task<List<UserDetailModel>> GetUserList();
+        Task<UserModel> SaveUser(UserModel userDetailModel);
+        Task<UserModel> GetUserByUserId(long UserId);
+        Task<List<UserModel>> GetUserList();
+        Task<List<UserModel>> GetAllUsers();
         Task<List<TaskModel>> GetTaskList();
         Task<List<AssignmentModel>> GetAssignmentList(long UserId);
         Task<AssignmentModel> SubmitAssignment(AssignmentModel model);

@@ -15,21 +15,26 @@ namespace TaskManagement.Data.DBRepository.User
 {
     public class UserRepostory(IConfiguration config, IOptions<ConnectionStrings> connectionString) : BaseRepository(connectionString), IUserRepository
     {
-        public async Task<UserDetailModel> GetUserByUserId(long UserId)
+        public async Task<UserModel> GetUserByUserId(long UserId)
         {
             var param = new DynamicParameters();
             param.Add("@UserId", UserId);
 
-            return await QueryFirstOrDefaultAsync<UserDetailModel>(StoreProcedure.GetUserByUserId, param, commandType: CommandType.StoredProcedure);
+            return await QueryFirstOrDefaultAsync<UserModel>(StoreProcedure.GetUserByUserId, param, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task<List<UserDetailModel>> GetUserList()
+        //Only get for the student list
+        public async Task<List<UserModel>> GetUserList()
         {
-            var data = await QueryAsync<UserDetailModel>(StoreProcedure.GetUserList,commandType : CommandType.StoredProcedure);
+            var data = await QueryAsync<UserModel>(StoreProcedure.GetUserList,commandType : CommandType.StoredProcedure);
             return data.ToList();
         }
-
-        public async Task<UserDetailModel> SaveUser(UserDetailModel model)
+        public async Task<List<UserModel>> GetAllUsers()
+        {
+            var data = await QueryAsync<UserModel>(StoreProcedure.GetAllUsers,commandType : CommandType.StoredProcedure);
+            return data.ToList();
+        }
+        public async Task<UserModel> SaveUser(UserModel model)
         {
             var param = new DynamicParameters();
             param.Add("@UserId", model.UserId);
@@ -39,7 +44,7 @@ namespace TaskManagement.Data.DBRepository.User
             param.Add("@Password", model.Password);
             param.Add("@RoleId", model.RoleId);
             param.Add("@CreatedBy", model.UserId);
-            UserDetailModel m = await QueryFirstOrDefaultAsync<UserDetailModel>(StoreProcedure.SaveUser, param, commandType: CommandType.StoredProcedure);
+            UserModel m = await QueryFirstOrDefaultAsync<UserModel>(StoreProcedure.SaveUser, param, commandType: CommandType.StoredProcedure);
             return m;
         }
         public async Task<List<TaskModel>> GetTaskList()

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagement.Data.DBRepository.Chat;
 using TaskManagement.Data.DBRepository.Login;
+using TaskManagement.Data.DBRepository.Notification;
 using TaskManagement.Data.DBRepository.ResetToken;
 using TaskManagement.Data.DBRepository.RoleRightMaster;
 using TaskManagement.Data.DBRepository.Teacher;
@@ -23,7 +25,9 @@ namespace TaskManagement.Data
                 { typeof(ITeacherRepository), typeof(TeacherRepository) },
                 { typeof(IRoleRightsRepository), typeof(RoleRightsRepository) },
                 { typeof(ITokenRepository), typeof(TokenRepository) },
-                { typeof(ITimeLogRepository), typeof(TimeLogRepository) }
+                { typeof(ITimeLogRepository), typeof(TimeLogRepository) },
+                { typeof(INotificationRepository), typeof(NotificationRepository) },
+                { typeof(IChatRepository), typeof(ChatRepository) }
             };
             return dataDictionary;
         }

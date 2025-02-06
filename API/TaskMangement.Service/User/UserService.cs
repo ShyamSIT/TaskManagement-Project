@@ -13,46 +13,43 @@ namespace TaskManagement.Service.User
     {
         #region Fields
         private readonly IUserRepository _repository = repository;
-
+        #endregion
         public async Task<long> DeleteUser(long UserId)
         {
             return await _repository.DeleteUser(UserId);
         }
-        #endregion
         public async Task<List<AssignmentModel>> GetAssignmentList(long UserId)
         {
             return await _repository.GetAssignmentList(UserId);
         }
-
         public async Task<FileModel> GetFileByFileId(long FileId)
         {
             return await _repository.GetFileByFileId(FileId);
         }
-
         public async Task<List<FileModel>> GetFileListByUserId(long UserId)
         {
-           return await _repository.GetFileListByUserId(UserId);
+            return await _repository.GetFileListByUserId(UserId);
         }
-
         public async Task<List<TaskModel>> GetTaskList()
         {
             return await _repository.GetTaskList();
         }
-        public async Task<UserDetailModel> GetUserByUserId(long UserId)
+        public async Task<UserModel> GetUserByUserId(long UserId)
         {
             return await _repository.GetUserByUserId(UserId);
         }
-
-        public Task<List<UserDetailModel>> GetUserList()
+        public async Task<List<UserModel>> GetUserList()
         {
-            return _repository.GetUserList();
+            return await _repository.GetUserList();
         }
-
-        public async Task<UserDetailModel> SaveUser(UserDetailModel userDetailModel)
+        public async Task<List<UserModel>> GetAllUsers()
+        {
+           return await _repository.GetAllUsers();
+        }
+        public async Task<UserModel> SaveUser(UserModel userDetailModel)
         {
             return await _repository.SaveUser(userDetailModel);
         }
-
         public async Task<AssignmentModel> SubmitAssignment(AssignmentModel model)
         {
             return await _repository.SubmitAssignment(model);

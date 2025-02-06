@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagement.Common;
 using TaskManagement.Model.Model;
+using TaskManagement.Service.Notification;
 using TaskManagement.Service.Teacher;
 
 namespace TaskManagement.API.Controllers
@@ -12,10 +13,12 @@ namespace TaskManagement.API.Controllers
     [Authorize]
     public class TeacherController(
         ITeacherService teacherService,
+        INotificationService notificationService,
         IWebHostEnvironment environment) : ControllerBase
     {
         #region fields
         private readonly ITeacherService _teacherService = teacherService;
+        private readonly INotificationService _notificationService = notificationService;
         private readonly IWebHostEnvironment _environment = environment;
         #endregion
 
@@ -103,6 +106,20 @@ namespace TaskManagement.API.Controllers
                 var res = await _teacherService.AssignTask(assignModel);
                 if (res == 1)
                 {
+                    
+                    foreach(var Id in assignModel.StudentIds!)
+                    {
+                        NotificationModel model = new NotificationModel
+                        {
+                            NotificationId = 0,
+                            UserId = Id,
+                            TaskId = assignModel.TaskId,
+                            Message = "New Task Will assign"
+                        };
+
+                        await _notificationService.NotifyNewTask(model);
+                    }
+                    
                     response.Success = true;
                     response.Data = "Assign Task Successfully";
                 }
@@ -123,12 +140,12 @@ namespace TaskManagement.API.Controllers
 
         #region GetAllUsersByNotAssignTask
         [HttpGet("GetAllUsersByNotAssignTask")]
-        public async Task<ApiResponse<UserDetailModel>> GetAllUsersByNotAssignTask(long TaskId)
+        public async Task<ApiResponse<UserModel>> GetAllUsersByNotAssignTask(long TaskId)
         {
-            ApiResponse<UserDetailModel> response = new() { Data = [] };
+            ApiResponse<UserModel> response = new() { Data = [] };
             try
             {
-                List<UserDetailModel> users = await _teacherService.GetAllUsersByNotAssignTask(TaskId);
+                List<UserModel> users = await _teacherService.GetAllUsersByNotAssignTask(TaskId);
                 response.Success = true;
                 response.Data = users;
             }

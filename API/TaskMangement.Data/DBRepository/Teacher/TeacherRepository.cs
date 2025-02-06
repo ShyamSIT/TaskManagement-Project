@@ -67,12 +67,12 @@ namespace TaskManagement.Data.DBRepository.Teacher
             return await QueryFirstOrDefaultAsync<long>(StoreProcedure.DeleteTask, param, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task<List<UserDetailModel>> GetAllUsersByNotAssignTask(long TaskId)
+        public async Task<List<UserModel>> GetAllUsersByNotAssignTask(long TaskId)
         {
             var param = new DynamicParameters();
             param.Add("@TaskId", TaskId);
 
-            var data = await QueryAsync<UserDetailModel>(StoreProcedure.GetAllUsersByNotAssignTask,param,commandType : CommandType.StoredProcedure);
+            var data = await QueryAsync<UserModel>(StoreProcedure.GetAllUsersByNotAssignTask,param,commandType : CommandType.StoredProcedure);
             return data.ToList();
         }
 

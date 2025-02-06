@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HvZLJOULQ1aas6xUhNcGCwcEl2+qwR52Wft4QRseNXQ9fqEBhgRAR75k8EyfEbD42eGTEGyzPvclyLTo4U3GpQ==",
+  "dgSpecHash": "QVRxwJQnKVd+IApKN0WM28LxUjVGEL9+c3X2q23B8sJkfaVzMmfHxZ14rr+rX/GjNUR9wqLbG6umSY5nJzOyXg==",
   "success": true,
-  "projectFilePath": "C:\\Shyam Dhokiya\\Practice Projects\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj",
+  "projectFilePath": "C:\\Shyam Dhokiya\\Personal Project\\Angular  + DotNet Core\\TaskManagement-2\\API\\TaskManagement.Common\\TaskManagement.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sit463\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\sit463\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

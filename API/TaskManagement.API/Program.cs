@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using TaskManagement.API;
+using TaskManagement.API.ChatHub;
 using TaskManagement.API.MiddleWare;
 using TaskManagement.Model;
 
@@ -13,14 +15,15 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", builder =>
     {
-        //builder.WithOrigins(Array.Empty<string>()) // Removed trailing slash
+        //builder.WithOrigins("http://localhost:4200") // Removed trailing slash
         //       .AllowAnyHeader()
         //       .AllowAnyMethod()
         //       .AllowCredentials();
 
         builder.AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowAnyOrigin();
+                .AllowAnyOrigin()
+                .SetIsOriginAllowed(origin => true);
     });
 });
 
@@ -48,11 +51,13 @@ builder.Services.AddHttpClient();
 builder.Services.RegisterServices();
 builder.Services.AddSingleton<JwtMiddleware>();
 builder.Services.AddEndpointsApiExplorer();
-
+builder.Services.AddSignalR();
+builder.Services.AddInfrastructure();
 
 //builder.Services.AddSwaggerGen();
 
-builder.Services.AddSwaggerGen(c => {
+builder.Services.AddSwaggerGen(c =>
+{
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "JWTToken_Auth_API",
@@ -68,16 +73,16 @@ builder.Services.AddSwaggerGen(c => {
         Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-        {
-            new OpenApiSecurityScheme {
-                Reference = new OpenApiReference {
-                    Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
+            {
+                new OpenApiSecurityScheme {
+                    Reference = new OpenApiReference {
+                        Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                    }
+                },
+                new string[] {}
+            }
+        });
 });
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -97,10 +102,13 @@ if (app.Environment.IsDevelopment())
 // Middleware configuration
 app.UseStaticFiles();
 app.UseRouting(); // Routing should be added first
+
+
 app.UseCors("AllowSpecificOrigins"); // Place after UseRouting
 app.UseAuthentication(); // Authentication middleware
-app.UseMiddleware<JwtMiddleware>(); // Custom middleware
 app.UseAuthorization();
+app.MapHub<ChatHub>("/chat-hub");
+app.UseMiddleware<JwtMiddleware>(); // Custom middleware
 
 app.MapControllers();
 

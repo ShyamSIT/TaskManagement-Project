@@ -13,7 +13,7 @@ namespace TaskManagement.Data.DBRepository.Teacher
         Task<List<TaskModel>> GetTaskList(long UserId);
         Task<TaskModel> GetTaskByTaskId(long TaskId);
         Task<long> AssignTask(AssignModel model);
-        Task<List<UserDetailModel>> GetAllUsersByNotAssignTask(long TaskId);
+        Task<List<UserModel>> GetAllUsersByNotAssignTask(long TaskId);
         Task<List<AssignmentModel>> GetAssignmentListByTeacherId(long UserId);
         Task<long> DeleteTask(long TaskId);
         Task<FileModel> SaveFile(FileModel fileModel);
