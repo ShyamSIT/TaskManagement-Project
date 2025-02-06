@@ -20,7 +20,9 @@ export class ApiUrlHelper {
             submitAssignment : 'user/SubmitAssignment',
             deleteUser  : 'user/DeleteUser',
             getFileListByUserId : 'user/GetFileListByUserId',
-            downloadPdf : 'user/DownloadPdf'
+            downloadPdf : 'user/DownloadPdf',
+            getAllNotifications : 'user/GetAllNotifications',
+            getAllUsers : 'user/GetAllUsers',
         },
         teacher : {
             addUpdateTask : 'teacher/AddUpdateTask',
@@ -43,6 +45,9 @@ export class ApiUrlHelper {
         },
         roleRight : {
             getRoleRightsById : 'roleRight/GetRoleRightsById',
+        },
+        chat : {
+            getAllChatMessages : 'user/GetAllChatMessages',
         }
     }
 }

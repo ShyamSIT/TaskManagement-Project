@@ -38,7 +38,7 @@ const routes: Routes = [
     path : 'file-list',
     component : FileListComponent,
     canActivate : [canActivate]
-  }
+  },
 ];
 
 @NgModule({

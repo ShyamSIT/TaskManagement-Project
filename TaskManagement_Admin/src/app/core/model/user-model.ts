@@ -5,5 +5,6 @@ export interface UserModel {
     Email : string,
     Password : string,
     RoleId : any,
-    FullName : string
+    FullName : string,
+    IsOnline : boolean
 }

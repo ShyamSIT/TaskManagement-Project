@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from 'src/app/demo/default/default.component';
 import { OcrImageComponent } from './ocr-image/ocr-image.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path : 'ocr-image',
     component : OcrImageComponent
+  },
+  {
+    path : "Chat",
+    component : ChatComponent
   }
 ];
 

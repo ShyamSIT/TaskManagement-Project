@@ -114,6 +114,30 @@
         </div>
       </div>
     </li> -->
+    <li *ngIf="RoleId !== 1">
+      <div class="dropdown pc-h-item notification" ngbDropdown>
+        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown"
+          href="javascript:" ngbDropdownToggle>
+            <span>
+              <i class="ti ti-bell"></i>
+            </span>
+            <span class="badge">{{ unreadCount }}</span>
+        </a>
+        <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown" ngbDropdownMenu>
+          <div class="dropdown-header">
+            <h4>
+              Notifications
+            </h4>
+            <hr />
+            <ng-scrollbar style="height: calc(100vh - 300px)" visibility="hover">
+              <ng-content *ngFor="let notification of notifications">
+                <span class="dropdown-item dropdown-notification"> {{ notification.Message }}</span>
+              </ng-content>
+            </ng-scrollbar>
+          </div>
+        </div>
+      </div>
+    </li>
     <li>
       <div class="dropdown pc-h-item header-user-profile" ngbDropdown>
         <a class="pc-head-link head-link-primary dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown"
@@ -131,7 +155,7 @@
             </h4>
             <!-- <p class="text-muted">Project Admin</p> -->
             <hr />
-            <ng-scrollbar style="height: calc(100vh - 280px)" visibility="hover">
+            <ng-scrollbar style="height: calc(100vh - 600px)" visibility="hover">
               <a [routerLink]="['/guest/register']" class="dropdown-item">
                 <i class="ti ti-settings"></i>
                 <span>Account Profile</span>

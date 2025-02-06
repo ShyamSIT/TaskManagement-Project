@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { UserModel } from 'src/app/core/model/user-model';
 import { CommonService } from 'src/app/core/services/common.service';
@@ -24,7 +25,8 @@ export class UserMasterComponent implements OnInit {
     Email : "",
     Password : "",
     RoleId : BigInt(0),
-    FullName : ""
+    FullName : "",
+    IsOnline : false
   }
   formSubmitted : boolean = false
 
@@ -33,7 +35,8 @@ export class UserMasterComponent implements OnInit {
     private fb: FormBuilder,
     private apiUrl: ApiUrlHelper,
     private commonService: CommonService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private toastr : ToastrService
   ) { }
 
   
@@ -73,6 +76,7 @@ export class UserMasterComponent implements OnInit {
       LastName : this.userForm.value.lastName,
       Email : this.userForm.value.email,
       Password : this.userForm.value.password,
+      RoleId : 2
     }
 
     this.commonService
@@ -81,7 +85,12 @@ export class UserMasterComponent implements OnInit {
       .subscribe({
         next : (data) => {
           if(data && data.Success){
+            this.toastr.success(data.Message);
             this.formSubmitted = false
+            this.modalRef.close();
+          }else{
+            this.toastr.error(data.Message);
+            this.formSubmitted = false;
             this.modalRef.close();
           }
         }

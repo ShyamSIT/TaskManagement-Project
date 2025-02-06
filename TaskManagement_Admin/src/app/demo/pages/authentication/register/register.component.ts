@@ -28,6 +28,7 @@ export default class RegisterComponent {
 
   initRegisterForm(){
     this.registerForm = this.fb.group({
+      // RoleId :['', Validators.required],
       firstName: ['', [Validators.required, Validators.maxLength(250)]],
       lastName: ['', [Validators.required, Validators.maxLength(250)]],
       email: ['', [Validators.required, Validators.maxLength(250)]],

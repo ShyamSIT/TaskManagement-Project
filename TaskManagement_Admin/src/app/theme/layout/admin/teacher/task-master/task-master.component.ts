@@ -41,8 +41,10 @@ export class TaskMasterComponent implements OnInit {
     this.initialForm();
     if (this.TaskId > 0) {
       this.getTaskByTaskId(this.TaskId);
-    } else
-     console.log('called addd');
+    } else{
+
+      console.log('called addd');
+    }
   }
 
   initialForm() {

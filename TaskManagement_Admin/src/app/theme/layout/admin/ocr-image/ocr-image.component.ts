@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as Tesseract from 'tesseract.js';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ocr-image',
@@ -14,15 +12,10 @@ export class OcrImageComponent implements OnInit {
   progress: number = 0;
   isProcessing: boolean = false;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  sanitizeHTML(text: string): SafeHtml {
-    // const transformedText = this.formatResponseToHtml(text);
-    return this.sanitizer.bypassSecurityTrustHtml(text);
-    // return text;
-  }
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -36,7 +29,7 @@ export class OcrImageComponent implements OnInit {
     const reader = new FileReader();
 
     reader.onload = async () => {
-      Tesseract.recognize(reader.result as string, 'eng', {
+      Tesseract.recognize(reader.result as string, 'eng+spa', {
         logger: (info) => {
           if (info.status === 'recognizing text') {
             this.progress = Math.round(info.progress * 100);

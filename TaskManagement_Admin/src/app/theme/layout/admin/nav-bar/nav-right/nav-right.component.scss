@@ -1,3 +1,42 @@
 .me-0 {
   margin: 0 0 0 16px !important;
 }
+
+.pc-head-link {
+  background-color: #e0cffc;
+  color: #6610f2;
+}
+
+ .dropdown-notification {
+  background-color: #c4ccde;
+  color: black;
+}
+
+.dropdown-notification:hover{
+  background-color: #c4ccde;
+  color: black;
+}
+
+.notification {
+  .pc-head-link {
+    height: 45px;
+    width: 45px;
+    border-radius: 50px;
+
+    .badge {
+      position: absolute;
+      top: -5px;
+      right: -3px;
+      color: black;
+      font-size: 20px;
+      border-radius: 50%;
+      padding: 2px 4px;
+      line-height: 1;
+    }
+
+    >span>i {
+      font-size: 23px;
+      margin-right: 3px;
+    }
+  }
+}

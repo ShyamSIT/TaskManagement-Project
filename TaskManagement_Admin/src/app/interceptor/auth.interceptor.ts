@@ -11,19 +11,24 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private storageService : StorageService,private router: Router,private modalService : NgbModal) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.storageService.getValue('JwtToken')
-
     if(token){
       const clonedReq = req.clone({
         headers: new HttpHeaders({
           'Authorization': 'Bearer ' + token
         })
       });
-
+      
       return next.handle(clonedReq).pipe(
         tap(
           Succ => {},
           err => {
+            
             if(err.code === 401){
+              this.modalService.dismissAll()
+              localStorage.clear();
+              this.router.navigate(['/auth/login']);
+            }
+            if(err.status === 401 || err.status === 0){
               this.modalService.dismissAll()
               localStorage.clear();
               this.router.navigate(['/auth/login']);
@@ -37,11 +42,12 @@ export class AuthInterceptor implements HttpInterceptor {
         tap(
           succ => { },
           err => {
-            if (err.status == 401) {
-              this.modalService.dismissAll()
-              localStorage.clear();
-              this.router.navigate(['/auth/login']);
-            }
+            // if (err.status == 401) {
+            // }
+            this.modalService.dismissAll()
+            localStorage.clear();
+            this.router.navigate(['/auth/login']);
+
           }
         ))
     }

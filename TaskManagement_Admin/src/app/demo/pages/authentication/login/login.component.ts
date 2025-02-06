@@ -90,7 +90,6 @@ export default class LoginComponent implements OnInit {
             this.toastr.success(data.Message); 
             // navigate to teacher module or user module
             if(LoginDetail.RoleId === 1){
-
               this.router.navigate(['/teacher/task-list']) 
             }else{  
               this.router.navigate(['/user/assignment-list'])

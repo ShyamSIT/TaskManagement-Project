@@ -47,27 +47,27 @@ export class FileListComponent implements OnInit {
   }
 
   OnDownload(FileName: any): void {
-    // const apiUrl = this.apiUrl.apiUrl.user.downloadPdf + '?FileName=' + FileName;
-    // this.commonService.
-    //   downloadFile(apiUrl)
-    //   .pipe()
-    //   .subscribe((result) => {
-    //     const blob = new Blob([result , { type: 'application/pdf'}])
-    //     const url = window.URL.createObjectURL(blob);
-    //     const anchor = document.createElement('a');
-    //     anchor.href = url;
-    //     anchor.download = FileName; // Specify the file name
-    //     anchor.click()
+    const apiUrl = this.apiUrl.apiUrl.user.downloadPdf + '?FileName=' + FileName;
+    this.commonService.
+      downloadFile(apiUrl)
+      .pipe()
+      .subscribe((result) => {
+        const blob = new Blob([result , { type: 'application/pdf'}])
+        const url = window.URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = FileName; // Specify the file name
+        anchor.click()
 
-    //     window.URL.revokeObjectURL(url);
-    //     console.log(blob);
-    //   })
-    const url = environment.baseUrl + '/UploadFiles/' + FileName
-    const anchor = document.createElement('a'); // Create an anchor element
-    anchor.href = url // Set the file URL
-    anchor.download = url; // Optional: Rename the file
-    // anchor.target = '_self'; // Opens in the same tab
-    
-    anchor.click();
+        window.URL.revokeObjectURL(url);
+        console.log(blob);
+      })
+    // const url = environment.baseUrl + '/UploadFiles/' + FileName
+    // const anchor = document.createElement('a'); // Create an anchor element
+    // anchor.href = url // Set the file URL
+    // anchor.download = url; // Optional: Rename the file
+    // // anchor.target = '_self'; // Opens in the same tab
+      
+    // anchor.click();
   }
 }

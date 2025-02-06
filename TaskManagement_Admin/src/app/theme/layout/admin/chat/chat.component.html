@@ -1,0 +1,66 @@
+<!-- <div class="chat-container" style="height: 81vh; width: 100%;" class="bg-success-subtle">
+    <div>
+
+    </div>
+</div> -->
+
+<div class="chat-container">
+    <!-- Sidebar: User List -->
+    <div class="chat-sidebar">
+        <h3>Chats</h3>
+        <ul>
+            <li *ngFor="let user of users" (click)="selectUser(user)"
+                [class.active]="selectedUser?.UserId === user.UserId">
+                <img src="assets/images/user/avatar-2.jpg" class="rounded rounded-circle" />
+                {{ user.FirstName }} {{ user.LastName }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box" *ngIf="selectedUser">
+        <div class="chat-header">
+            <div>
+                <img src="assets/images/user/avatar-2.jpg" class="rounded rounded-circle w-50 h-50" />
+            </div>
+            <h3>{{ selectedUser.FirstName }} {{selectedUser.LastName}}</h3>
+        </div>
+        <div class="chat-messages" #messagesContainer>
+            <ng-container *ngFor="let group of groupedMessages | keyvalue : asIsOrder">
+                <div class="message-group">
+                    <p style="text-align: center;">
+                        <span class="group-title">{{ group.key }}</span>
+                    </p>
+                    <ng-container *ngFor="let message of group.value">
+                        <div [class.sent]="(message.SenderId === loggedUserId && message.ReceiverId !== loggedUserId) || (message.SenderId === loggedUserId && message.ReceiverId === loggedUserId)"
+                            [class.received]="message.SenderId !== loggedUserId && message.ReceiverId === loggedUserId">
+                            {{ message.MessageText }}
+                            <span style="font-size: 10px; padding-left: 4px;">{{ message.SentAt | date: 'hh:mm a'
+                                }}</span>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+            <!-- Typing indicator -->
+            <span *ngIf="isTyping" class="typing-indicator">
+                ...
+            </span>
+        </div>
+
+
+        <!-- Chat Input Box -->
+        <div class="chat-input">
+            <button><i class="ti ti-mood-smile"></i>
+            </button>
+            <button><i class="ti ti-paperclip"></i></button>
+            <input type="text" [(ngModel)]="messageText" placeholder="Type a message..." (keyup.enter)="sendMessage()"
+                (input)="onTyping()" />
+            <button (click)="sendMessage()" class="send-btn"><i class="ti ti-send"></i></button>
+        </div>
+    </div>
+
+    <!-- If no chat is selected -->
+    <div class="chat-placeholder" *ngIf="!selectedUser">
+        <h3>Select a chat to start messaging</h3>
+    </div>
+</div>

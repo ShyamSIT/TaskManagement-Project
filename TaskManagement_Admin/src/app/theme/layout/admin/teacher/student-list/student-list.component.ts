@@ -13,65 +13,58 @@ import { UserMasterComponent } from '../user-master/user-master.component';
   styleUrl: './student-list.component.scss'
 })
 export class StudentListComponent implements OnInit {
+  public users: UserModel[] = [];
 
-  public users : UserModel[] = []; 
-
-  constructor( 
+  constructor(
     private storageService: StorageService,
     private commonService: CommonService,
     private apiUrl: ApiUrlHelper,
     private router: Router,
-    private modalService: NgbModal 
-  ){}
+    private modalService: NgbModal
+  ) {}
   ngOnInit(): void {
-    this.getStudentList()
+    this.getStudentList();
   }
 
-  getStudentList(){
-    const apiUrl = this.apiUrl.apiUrl.user.getUserList
+  getStudentList() {
+    const apiUrl = this.apiUrl.apiUrl.user.getUserList;
 
     this.commonService
       .doGet(apiUrl)
       .pipe()
       .subscribe({
-        next : (data) => {
-          if(data && data.Success && data.Data){
+        next: (data) => {
+          if (data && data.Success && data.Data) {
             this.users = data.Data;
           }
         }
-      })
+      });
   }
 
-  openModal(){
-    const modalRef = this.modalService.open(UserMasterComponent , {centered: true});
-    modalRef.result.then((result) =>
-      this.getStudentList()
-    )
+  openModal() {
+    const modalRef = this.modalService.open(UserMasterComponent, { centered: true });
+    modalRef.result.then((result) => this.getStudentList());
   }
 
-  onEditModal(UserId : BigInt){
-    
-    const modalRef = this.modalService.open(UserMasterComponent , {
+  onEditModal(UserId: BigInt) {
+    const modalRef = this.modalService.open(UserMasterComponent, {
       centered: true
-    })
+    });
     modalRef.componentInstance.data = UserId;
-    modalRef.result.then((result) =>
-      this.getStudentList()
-    )
+    modalRef.result.then((result) => this.getStudentList());
   }
 
-  onDeleteUser(UserId : any){
-    const apiUrl = this.apiUrl.apiUrl.user.deleteUser + '?UserId=' + UserId
+  onDeleteUser(UserId: any) {
+    const apiUrl = this.apiUrl.apiUrl.user.deleteUser + '?UserId=' + UserId;
     this.commonService
-     .doGet(apiUrl)
-     .pipe()
-     .subscribe({
-        next : (data) => {
-          if(data && data.Success){
-            this.getStudentList()
+      .doGet(apiUrl)
+      .pipe()
+      .subscribe({
+        next: (data) => {
+          if (data && data.Success) {
+            this.getStudentList();
           }
         }
-      })
+      });
   }
-
 }

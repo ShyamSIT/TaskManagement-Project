@@ -318,7 +318,6 @@ export class TimeTrackerComponent implements OnInit {
       .subscribe({
         next: (data) => {
           if (data) {
-            debugger
             this.getTimeLoglist();
           } else {
             this.toastr.error('Failed to Delete Time Log');

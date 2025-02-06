@@ -4,6 +4,7 @@ import { debug } from 'console';
 import { ApiUrlHelper } from 'src/app/config/apiUrlHelper';
 import { AssignmentModel } from 'src/app/core/model/assignment-model';
 import { CommonService } from 'src/app/core/services/common.service';
+import { SignalRService } from 'src/app/core/services/signalR.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 
 @Component({
@@ -15,6 +16,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
 export class AssignmentListComponent {
   assignments: AssignmentModel[] = [];
   todayDate: any;
+
   constructor(
     private apiUrl: ApiUrlHelper,
     private commonService: CommonService,
@@ -22,8 +24,9 @@ export class AssignmentListComponent {
     private datepipe: DatePipe
   ) {}
 
+  userId: any = this.storageService.getValue('UserId');
+  receivedId: any;
   ngOnInit(): void {
-    debugger;
     this.getAssignments();
     this.todayDate = new Date();
   }

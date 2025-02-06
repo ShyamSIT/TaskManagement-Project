@@ -32,7 +32,7 @@ const routes: Routes = [
     path : 'time-tracker',
     component : TimeTrackerComponent,
     canActivate : [canActivate]
-  }
+  },
 ];
 
 @NgModule({
