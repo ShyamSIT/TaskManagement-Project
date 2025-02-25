@@ -161,10 +161,10 @@
 }
 
 .chat-input input {
-    width: 85%;
+    width: 90%;
     margin: 0px 10px;
-    padding: 5px 5px;
-    border-radius: 10px;
+    padding: 5px 15px;
+    border-radius: 5px;
     border: 1px solid #ECE5DD;
 }
 
@@ -174,7 +174,7 @@
     outline: none;
 }
 
-.chat-input button >i {
+.chat-input button > i {
     font-size: 1.35rem !important;
 }
 :host ::ng-deep .send-btn {
