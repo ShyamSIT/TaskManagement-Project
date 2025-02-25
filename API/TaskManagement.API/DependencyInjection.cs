@@ -19,7 +19,7 @@ namespace TaskManagement.API
                            .AddTrigger(trigger => trigger
                            .ForJob(jobkey)
                            .WithIdentity("NotificationJob-trigger")
-                           .WithCronSchedule("0 18 18 * * ?")
+                           .WithCronSchedule("0 0 17 * * ?")
                            );
                 });
 
